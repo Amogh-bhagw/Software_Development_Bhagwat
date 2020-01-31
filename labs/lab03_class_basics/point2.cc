@@ -10,32 +10,11 @@ float Point2::DistanceBetween(Point2 other_){
 }
 
 int Point2::Quadrant(){
-	float x_Point =  x_;
-	float y_Point = y_;
-	if(x_Point == 0 && y_Point == 0){
-		return 0;
-	}
-	if (x_Point < 0){
-		if(y_Point > 0){
-			return 2;
-		}
-		else{
-			return 3;
-		}
-	}
-	else{
-		if(y_Point > 0){
-			return 1;
-		}
-		else{
-			return 4;
-		}
-	}
 	return 0;
 }
 
 void Point2::Print(){
-	cout << "Point x: " << x_ << " Point y: " << y_ << endl;
+	cout << "Hlel" ;
 }
 
 Point2::Point2() {
