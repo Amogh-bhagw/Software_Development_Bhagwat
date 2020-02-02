@@ -13,6 +13,7 @@ int Point2::Quadrant(){
 	if(x_ == 0 && y_ == 0){
 		return 0;
 	}
+
 	if(x_ > 0){
 		if(y_ > 0){
 			return 1;
@@ -21,6 +22,7 @@ int Point2::Quadrant(){
 			return 4;
 			}
 		}
+		
   else{
 			if(y_ > 0){
 				return 2;
