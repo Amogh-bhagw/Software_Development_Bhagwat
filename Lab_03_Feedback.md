@@ -1,40 +1,28 @@
 ### Feedback for Lab 03
 
-Run on January 31, 08:26:10 AM.
+Run on January 31, 08:42:46 AM.
 
 
 #### Necessary Files and Structure
 
-+ Fail: Check that directory "googletest" exists.
++ Pass: Check that directory "googletest" exists.
 
-     "googletest" not found.
++ Pass: Check that directory "labs" exists.
 
-+ Skip: Check that directory "labs" exists.
++ Pass: Check that directory "labs/lab03_class_basics" exists.
 
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that directory "labs/lab03_class_basics" exists.
-
-  This test was not run because of an earlier failing test.
-
-+ Skip: Change into directory "labs/lab03_class_basics".
-
-  This test was not run because of an earlier failing test.
++ Pass: Change into directory "labs/lab03_class_basics".
 
 
 #### Essential Files Exist
 
-+ Skip: Check that file "Makefile" exists.
++ Pass: Check that file "Makefile" exists.
 
-  This test was not run because of an earlier failing test.
++ Pass: Check that file "Makefile.test" exists.
 
-+ Skip: Check that file "Makefile.test" exists.
++ Fail: Check that file ".gitignore" exists.
 
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that file ".gitignore" exists.
-
-  This test was not run because of an earlier failing test.
+     ".gitignore" not found.
 
 + Skip: Check that file "point2.cc" exists.
 
