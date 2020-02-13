@@ -19,7 +19,7 @@ public:
   void Deliver();
   static void IncrementCount() { delivery_count_++; }
   static void DecrementCount() { delivery_count_--; }
-
+  Delivery(const Delivery &package);
   void set_days(int d) {days_to_deliver_ = d;}
   int get_days() { return days_to_deliver_; }
   static int get_count() { return delivery_count_;}
