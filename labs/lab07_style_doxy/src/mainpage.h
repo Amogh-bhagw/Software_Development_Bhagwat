@@ -4,11 +4,11 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-/*! \mainpage My Personal Index Page
+/*! \mainpage This is the Home Page for Passenger and PassengerFactory
  *
  * \section intro_sec Introduction
  *
  * This is the introduction.
- * Checking to see if this works.
+ * Click on classes to see all the classes.
  *
  */
