@@ -1,13 +1,24 @@
-#include "passenger.h"
+/**
+ * @file main.cc
+ *
+ * @copyright 2019 3081 Staff, All rights reserved.
+ */
 
+ /*******************************************************************************
+   * Includes
+ ******************************************************************************/
 #include <iostream>
 #include <string>
+
+#include "src/passenger.h"
 
 
 int Passenger::count_ = 0;
 
-//Passenger::Passenger(Stop * dest = NULL, std::string name = "Nobody") {
-Passenger::Passenger(int destination_stop_id, std::string name): name_(name), destination_stop_id_(destination_stop_id), wait_at_stop_(0), time_on_bus_(0), id_(count_) {
+// Passenger::Passenger(Stop * dest = NULL, std::string name = "Nobody") {
+Passenger::Passenger(int destination_stop_id, std::string name):
+name_(name), destination_stop_id_(destination_stop_id), wait_at_stop_(0),
+time_on_bus_(0), id_(count_) {
   count_++;
 }
 

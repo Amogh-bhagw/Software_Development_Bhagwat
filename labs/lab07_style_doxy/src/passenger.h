@@ -1,15 +1,37 @@
-#ifndef PASSENGER_H
-#define PASSENGER_H
+/**
+ * @file passenger_factory.h
+ *
+ * @copyright 2019 3081 Staff, All rights reserved.
+ */
 
+#ifndef SRC_PASSENGER_H_
+#define SRC_PASSENGER_H_
+
+
+/*******************************************************************************
+ * Includes
+ ******************************************************************************/
 #include <iostream>
 #include <string>
 
-class Passenger { // : public Reporter {
+/*******************************************************************************
+ * Class Definitions
+ ******************************************************************************/
+/**
+ * @brief The main class for the information and updating of passengers.
+ *
+ *
+ */
+class Passenger {  // : public Reporter {
  public:
-  Passenger(int = -1, std::string = "Nobody");
+  explicit Passenger(int = -1, std::string = "Nobody");
   void Update();
   void GetOnBus();
   int GetTotalWait() const;
+/**
+ * @breif IsOnBus returns if Passenger is on the bus.
+ * No parameters taken. Use it by calling it with the object.
+*/
   bool IsOnBus() const;
   int GetDestination() const;
   void Report() const;
@@ -20,6 +42,5 @@ class Passenger { // : public Reporter {
   int time_on_bus_;
   int id_;
   static int count_;  // global count, used to set ID for new instances
-  
 };
-#endif
+#endif  // SRC_PASSENGER_H_
