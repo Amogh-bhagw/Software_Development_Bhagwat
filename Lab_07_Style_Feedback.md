@@ -1,6 +1,6 @@
 ### Style Feedback for Lab 07
 
-Run on February 17, 15:25:08 PM.
+Run on February 17, 16:58:27 PM.
 
 
 #### Necessary Files and Structure
@@ -13,24 +13,16 @@ Run on February 17, 15:25:08 PM.
 
 + Pass: Change into directory "labs/lab07_style_doxy".
 
-+ Fail: Check that directory "docs" exists.
++ Pass: Check that directory "docs" exists.
 
-     "docs" not found.
-
-+ Skip: Check that file "docs/Doxyfile" exists.
-
-  This test was not run because of an earlier failing test.
++ Pass: Check that file "docs/Doxyfile" exists.
 
 
 #### .gitignore configured properly
 
-+ Skip: Check that file/directory "docs/html" does not exist.
++ Pass: Check that file/directory "docs/html" does not exist.
 
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that file/directory "docs/latex" does not exist.
-
-  This test was not run because of an earlier failing test.
++ Pass: Check that file/directory "docs/latex" does not exist.
 
 
 #### Google Style Compliance
@@ -50,19 +42,11 @@ Run on February 17, 15:25:08 PM.
 
 #### Doxygen
 
-+ Fail: Change into directory "docs".
++ Pass: Change into directory "docs".
 
-     Directory "docs" not found.
++ Pass: Generating documentation by running doxygen
 
-+ Skip: Generating documentation by running doxygen
++ Pass: Check that file "html/classPassenger.html" exists.
 
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that file "html/classPassenger.html" exists.
-
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that file "html/classPassengerFactory.html" exists.
-
-  This test was not run because of an earlier failing test.
++ Pass: Check that file "html/classPassengerFactory.html" exists.
 
