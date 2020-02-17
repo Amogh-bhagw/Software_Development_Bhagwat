@@ -1,6 +1,6 @@
 ### Style Feedback for Lab 07
 
-Run on February 17, 14:41:29 PM.
+Run on February 17, 15:25:08 PM.
 
 
 #### Necessary Files and Structure
@@ -35,21 +35,17 @@ Run on February 17, 14:41:29 PM.
 
 #### Google Style Compliance
 
-+ Fail: Check that file "src/mainpage.h" exists.
++ Pass: Check that file "src/mainpage.h" exists.
 
-     "src/mainpage.h" not found.
++ Pass: Ignoring mainpage.h
 
-+ Skip: Ignoring mainpage.h
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Cpplint checking for for Google C++ compliance
++ Pass: Cpplint checking for for Google C++ compliance
 
-  This test was not run because of an earlier failing test.
++ Pass: Getting mainpage.h back
 
-+ Skip: Getting mainpage.h back
 
-  This test was not run because of an earlier failing test.
 
 
 #### Doxygen
