@@ -1,29 +1,21 @@
 ### Style Feedback for Lab 07
 
-Run on February 11, 11:48:12 AM.
+Run on February 17, 14:41:29 PM.
 
 
 #### Necessary Files and Structure
 
-+ Fail: Check that directory "cpplint" exists.
++ Pass: Check that directory "cpplint" exists.
 
-     "cpplint" not found.
++ Pass: Check that directory "labs" exists.
 
-+ Skip: Check that directory "labs" exists.
++ Pass: Check that directory "labs/lab07_style_doxy" exists.
 
-  This test was not run because of an earlier failing test.
++ Pass: Change into directory "labs/lab07_style_doxy".
 
-+ Skip: Check that directory "labs/lab07_style_doxy" exists.
++ Fail: Check that directory "docs" exists.
 
-  This test was not run because of an earlier failing test.
-
-+ Skip: Change into directory "labs/lab07_style_doxy".
-
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that directory "docs" exists.
-
-  This test was not run because of an earlier failing test.
+     "docs" not found.
 
 + Skip: Check that file "docs/Doxyfile" exists.
 
@@ -32,11 +24,11 @@ Run on February 11, 11:48:12 AM.
 
 #### .gitignore configured properly
 
-+ Skip: Check that file/directory "html" does not exist.
++ Skip: Check that file/directory "docs/html" does not exist.
 
   This test was not run because of an earlier failing test.
 
-+ Skip: Check that file/directory "latex" does not exist.
++ Skip: Check that file/directory "docs/latex" does not exist.
 
   This test was not run because of an earlier failing test.
 
