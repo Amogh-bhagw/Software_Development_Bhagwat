@@ -1,189 +1,101 @@
 ### Assessment for Lab 06
 
-#### Total score: _0_ / _85_
+#### Total score: _50_ / _100_
 
-Run on February 18, 09:26:04 AM.
+Run on February 18, 13:18:58 PM.
 
 
-#### System Files and Lab Directory Structure
-
-+ Pass: Check that directory "googletest" exists.
+#### System Files and Directory Structure
 
 + Pass: Check that directory "labs" exists.
 
-+ Fail: Check that directory "labs/lab06_google_tests" exists.
++ Pass: Check that directory "labs/lab06_gdb" exists.
 
-     "labs/lab06_google_tests" not found.
++ Pass: Change into directory "labs/lab06_gdb".
 
-+ Skip: Make directory "Lab06_Testing".
++  _10_ / _10_ : Pass: Replace doInterestingThing(1999); with doInterestingThing(1999);doInterestingThing(2018); in main.cc.
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Change into directory "Lab06_Testing".
 
-  This test was not run because of an earlier failing test.
 
+#### Test that code compiles and creates the exectuable
 
-#### Essential Files Exist
++  _30_ / _30_ : Pass: Check that make compiles.
 
-+ Skip: Check that file "../labs/lab06_google_tests/date_unittest.cc" exists.
 
-  This test was not run because of an earlier failing test.
 
++  _10_ / _10_ : Pass: Check that file "date" exists.
 
-### Testing correct implementation
 
-+ Skip: Copy directory "Lab06 files.".
+#### Test Output Execution
 
-  This test was not run because of an earlier failing test.
++  _0_ / _10_ : Fail: Program executes flawlessly.
 
-+ Skip: Copy directory "Files for correct version".
+<pre> ... A set of Dates ... 
+default date is: January 1, 1900
+date d2 is: April 19, 1998
+date d3 is: April 19, 1998
+ ... Now print out 4 dates in reverse time order ... 
+date is: January 1, 1993
+date is: January 1, 1992
+date is: January 1, 1991
+date is: January 1, 1990
+the first date is: January 2, 1990
+ ... A set of Dates ... 
+default date is: January 1, 1900
+date d2 is: April 19, 1999
+date d3 is: April 19, 1999
+ ... Now print out 4 dates in reverse time order ... 
+date is: January 1, 1993
+</pre>
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Change into directory "correct".
 
-  This test was not run because of an earlier failing test.
++  _0_ / _5_ : Fail: Check for correct output.
 
-+ Skip: Check that make compiles.
+    Files are not equal.
+diff: date.output: No such file or directory
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Check that file "date_unittest" exists.
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Get all google tests.
++ Pass: Replace i <= with i < in main.cc.
 
-  This test was not run because of an earlier failing test.
 
 
-#### Results
++ Pass: Check that make compiles.
 
 
-### Testing Mutants
 
++  _0_ / _20_ : Fail: Most of the program works.
 
-#### Testing Mutant 1 for failure
+<pre> ... A set of Dates ... 
+default date is: January 1, 1900
+date d2 is: April 19, 1998
+date d3 is: April 19, 1998
+ ... Now print out 4 dates in reverse time order ... 
+date is: January 1, 1993
+date is: January 1, 1992
+date is: January 1, 1991
+date is: January 1, 1990
+the first date is: January 2, 1990
+ ... A set of Dates ... 
+default date is: January 1, 1900
+date d2 is: April 19, 1999
+date d3 is: April 19, 1999
+ ... Now print out 4 dates in reverse time order ... 
+date is: January 1, 1993
+</pre>
 
-+  _0_ / _5_ : Skip: Abstract test class.
 
-  This test was not run because of an earlier failing test.
 
++  _0_ / _15_ : Fail: Check for correct output.
 
-#### Testing Mutant 2 for failure
+    Files are not equal.
+diff: date.output: No such file or directory
 
-+  _0_ / _5_ : Skip: Abstract test class.
 
-  This test was not run because of an earlier failing test.
 
 
-#### Testing Mutant 3 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 4 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 5 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 6 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 7 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 8 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 9 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 10 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 11 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 12 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 13 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 14 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 15 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 16 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Testing Mutant 17 for failure
-
-+  _0_ / _5_ : Skip: Abstract test class.
-
-  This test was not run because of an earlier failing test.
-
-
-#### Results
-
-#### Total score: _0_ / _85_
+#### Total score: _50_ / _100_
 
