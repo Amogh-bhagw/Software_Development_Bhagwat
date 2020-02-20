@@ -1,6 +1,6 @@
 ### Fuller Feedback for Lab 08
 
-Run on February 19, 20:16:45 PM.
+Run on February 20, 00:25:35 AM.
 
 
 #### System Files and Lab Directory Structure
