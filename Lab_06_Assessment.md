@@ -2,7 +2,7 @@
 
 #### Total score: _50_ / _100_
 
-Run on February 18, 13:18:58 PM.
+Run on February 21, 13:30:57 PM.
 
 
 #### System Files and Directory Structure
@@ -41,12 +41,6 @@ date is: January 1, 1992
 date is: January 1, 1991
 date is: January 1, 1990
 the first date is: January 2, 1990
- ... A set of Dates ... 
-default date is: January 1, 1900
-date d2 is: April 19, 1999
-date d3 is: April 19, 1999
- ... Now print out 4 dates in reverse time order ... 
-date is: January 1, 1993
 </pre>
 
 
@@ -79,12 +73,6 @@ date is: January 1, 1992
 date is: January 1, 1991
 date is: January 1, 1990
 the first date is: January 2, 1990
- ... A set of Dates ... 
-default date is: January 1, 1900
-date d2 is: April 19, 1999
-date d3 is: April 19, 1999
- ... Now print out 4 dates in reverse time order ... 
-date is: January 1, 1993
 </pre>
 
 
