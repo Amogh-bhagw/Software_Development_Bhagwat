@@ -19,7 +19,8 @@ class DateTest : public ::testing::Test {
   newYear_day = Date (2016, 1 , 1);
   march_day = Date (2016, 3, 1);
   random_day = Date (999999999);
-//  today = Date();
+  today = Date();
+  today1 = Date();
   }
  protected:
   Date first_day;          // first day of classes
@@ -30,7 +31,8 @@ class DateTest : public ::testing::Test {
   Date newYear_day;
   Date march_day;
   Date random_day;
-//  Date today;
+  Date today;
+  Date today1;
 };
 
 
@@ -113,6 +115,7 @@ TEST_F(DateTest, GetDate){
   EXPECT_EQ(random_day.GetDate(), "2001-09-09") << "Epoch test";
   birth_day = birth_day - 3;
   EXPECT_EQ(birth_day.GetDate(), "1999-08-20") << "Subtracting";
+  EXPECT_EQ(today.GetDate(), today1.GetDate()) << "Today";
 
     //EXPECT_EQ(today.GetDate(), "2020-20-02") << "Current day";
 }
