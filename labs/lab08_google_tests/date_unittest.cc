@@ -21,6 +21,8 @@ class DateTest : public ::testing::Test {
   random_day = Date (999999999);
   today = Date();
   today1 = Date();
+  leap_year = Date(2020, 02, 28);
+  not_leap_year = Date(2019, 2, 28);
   }
  protected:
   Date first_day;          // first day of classes
@@ -33,6 +35,8 @@ class DateTest : public ::testing::Test {
   Date random_day;
   Date today;
   Date today1;
+  Date leap_year;
+  Date not_leap_year;
 };
 
 
@@ -116,13 +120,37 @@ TEST_F(DateTest, GetDate){
   birth_day = birth_day - 3;
   EXPECT_EQ(birth_day.GetDate(), "1999-08-20") << "Subtracting";
   EXPECT_EQ(today.GetDate(), today1.GetDate()) << "Today";
+  leap_year = leap_year + 1;
+  EXPECT_EQ(leap_year.GetDate(), "2020-02-29") << "leap year Check";
+  not_leap_year = not_leap_year + 1;
+  EXPECT_EQ(not_leap_year.GetDate(), "2019-03-01") << "not a leap year Check";
 
     //EXPECT_EQ(today.GetDate(), "2020-20-02") << "Current day";
 }
 TEST_F(DateTest, DaysBetween2){
   EXPECT_EQ(first_day.DaysBetween(first_day), 0 ) << "Same day";
   EXPECT_EQ(newYear_day.DaysBetween(march_day), 60 ) << "mutate test";
+  leap_year = leap_year + 1;
+  EXPECT_EQ(leap_year.GetDate(), "2020-02-29") << "leap year Check";
+  EXPECT_EQ(leap_year.DaysBetween(not_leap_year), 366) << "leap year test";
 
+
+}
+
+TEST_F(DateTest, USDates) {
+  EXPECT_EQ(first_day.GetUsDate(), "09-04-2018") << "US date first day";
+  EXPECT_EQ(last_day.GetUsDate(), "12-11-2018") << "Last day is correctly returned";
+  EXPECT_EQ(new_year_eve.GetUsDate(), "12-31-3333") <<"Check Future dates";
+  EXPECT_EQ(birth_day.GetUsDate(), "08-23-1999") <<" Check for leading zero";
+  EXPECT_EQ(early_day.GetUsDate(), "01-01-1") <<"all 1's check";
+  EXPECT_EQ(random_day.GetUsDate(), "09-09-2001") << "Epoch test";
+  birth_day = birth_day - 3;
+  EXPECT_EQ(birth_day.GetUsDate(), "08-20-1999") << "Subtracting";
+  EXPECT_EQ(today.GetUsDate(), today1.GetUsDate()) << "Today";
+  leap_year = leap_year + 1;
+  EXPECT_EQ(leap_year.GetUsDate(), "02-29-2020") << "leap year Check";
+  not_leap_year = not_leap_year + 1;
+  EXPECT_EQ(not_leap_year.GetUsDate(), "03-01-2019") << "not a leap year Check";
 
 }
 
