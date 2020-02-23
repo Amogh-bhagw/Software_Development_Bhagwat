@@ -1,6 +1,6 @@
 ### Fuller Feedback for Lab 08
 
-Run on February 22, 21:35:25 PM.
+Run on February 22, 23:51:51 PM.
 
 
 #### System Files and Lab Directory Structure
@@ -111,8 +111,7 @@ Run on February 22, 21:35:25 PM.
 
 #### Testing Mutant 7 for failure
 
-+ Fail: There is no test case for this mutant (since all tests pass).
-   - Reason - operator-: Probably a copy paste error
++ Pass: At least one test failed for Mutant 7
 
 
 #### Testing Mutant 8 for failure
