@@ -18,7 +18,7 @@ class DateTest : public ::testing::Test {
   early_day = Date(1,1,1);
   newYear_day = Date (2016, 1 , 1);
   march_day = Date (2016, 3, 1);
-  random_day = Date (100000000);
+  random_day = Date (999999999);
 //  today = Date();
   }
  protected:
@@ -105,11 +105,15 @@ TEST_F(DateTest, DaysBetweenTests) {
 
 TEST_F(DateTest, GetDate){
   EXPECT_EQ(first_day.GetDate(), "2018-09-04") << "Check to see if first day is retrieved";
+  EXPECT_EQ(first_day.GetUsDate(), "09-04-2018") << "US date first day";
   EXPECT_EQ(last_day.GetDate(), "2018-12-11") << "Last day is correctly returned";
   EXPECT_EQ(new_year_eve.GetDate(), "3333-12-31") <<"Check Future dates";
   EXPECT_EQ(birth_day.GetDate(), "1999-08-23") <<" Check for leading zero";
   EXPECT_EQ(early_day.GetDate(), "1-01-01") <<"all 1's check";
-  EXPECT_EQ(random_day.GetDate(), "1973-03-03") << "Epoch test";
+  EXPECT_EQ(random_day.GetDate(), "2001-09-09") << "Epoch test";
+  birth_day = birth_day - 3;
+  EXPECT_EQ(birth_day.GetDate(), "1999-08-20") << "Subtracting";
+
     //EXPECT_EQ(today.GetDate(), "2020-20-02") << "Current day";
 }
 TEST_F(DateTest, DaysBetween2){
