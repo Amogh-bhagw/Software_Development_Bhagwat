@@ -1,6 +1,6 @@
 ### Fuller Feedback for Lab 08
 
-Run on February 22, 23:51:51 PM.
+Run on February 23, 18:04:18 PM.
 
 
 #### System Files and Lab Directory Structure
@@ -40,7 +40,7 @@ Run on February 22, 23:51:51 PM.
 + Pass: Check that file "date_unittest" exists.
 
 + Pass: Get all google tests.
-    5 tests found.
+    6 tests found.
 
 
 
@@ -69,6 +69,11 @@ Run on February 22, 23:51:51 PM.
 
 + Pass: Check that a GoogleTest test passes.
     passes the test: DateTest.DaysBetween2.
+
+
+
++ Pass: Check that a GoogleTest test passes.
+    passes the test: DateTest.USDates.
 
 
 
