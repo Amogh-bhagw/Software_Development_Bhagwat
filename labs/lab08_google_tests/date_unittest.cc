@@ -119,13 +119,22 @@ TEST_F(DateTest, GetDate){
   EXPECT_EQ(random_day.GetDate(), "2001-09-09") << "Epoch test";
   birth_day = birth_day - 3;
   EXPECT_EQ(birth_day.GetDate(), "1999-08-20") << "Subtracting";
-  EXPECT_EQ(today.GetDate(), today1.GetDate()) << "Today";
   leap_year = leap_year + 1;
   EXPECT_EQ(leap_year.GetDate(), "2020-02-29") << "leap year Check";
   not_leap_year = not_leap_year + 1;
   EXPECT_EQ(not_leap_year.GetDate(), "2019-03-01") << "not a leap year Check";
 
-    //EXPECT_EQ(today.GetDate(), "2020-20-02") << "Current day";
+  int yyyy, mm, dd;
+  std::time_t r = std::time(0);
+  std::tm* now2 = std::localtime(&r);
+  //tm year's value is years since 1900
+  yyyy = now2->tm_year + 1900;
+  //tm month's value is zero-indexed
+  mm = now2->tm_mon + 1;
+  //tm day's value is one-indexed
+  dd = now2->tm_mday;
+  Date tt = Date(yyyy, mm, dd);
+  EXPECT_EQ(today.GetDate() , tt.GetDate()) << "test for current day";
 }
 TEST_F(DateTest, DaysBetween2){
   EXPECT_EQ(first_day.DaysBetween(first_day), 0 ) << "Same day";
@@ -133,7 +142,17 @@ TEST_F(DateTest, DaysBetween2){
   leap_year = leap_year + 1;
   EXPECT_EQ(leap_year.GetDate(), "2020-02-29") << "leap year Check";
   EXPECT_EQ(leap_year.DaysBetween(not_leap_year), 366) << "leap year test";
-
+  int yyyy, mm, dd;
+  std::time_t r = std::time(0);
+  std::tm* now2 = std::localtime(&r);
+  //tm year's value is years since 1900
+  yyyy = now2->tm_year + 1900;
+  //tm month's value is zero-indexed
+  mm = now2->tm_mon + 1;
+  //tm day's value is one-indexed
+  dd = now2->tm_mday;
+  Date tt = Date(yyyy, mm, dd);
+  EXPECT_EQ(today.DaysBetween(tt) , 0) << "test for current US date";
 
 }
 
@@ -151,6 +170,18 @@ TEST_F(DateTest, USDates) {
   EXPECT_EQ(leap_year.GetUsDate(), "02-29-2020") << "leap year Check";
   not_leap_year = not_leap_year + 1;
   EXPECT_EQ(not_leap_year.GetUsDate(), "03-01-2019") << "not a leap year Check";
+
+  int yyyy, mm, dd;
+  std::time_t r = std::time(0);
+  std::tm* now2 = std::localtime(&r);
+  //tm year's value is years since 1900
+  yyyy = now2->tm_year + 1900;
+  //tm month's value is zero-indexed
+  mm = now2->tm_mon + 1;
+  //tm day's value is one-indexed
+  dd = now2->tm_mday;
+  Date tt = Date(yyyy, mm, dd);
+  EXPECT_EQ(today.GetUsDate() , tt.GetUsDate()) << "test for current US date";
 
 }
 
