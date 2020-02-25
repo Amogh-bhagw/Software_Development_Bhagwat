@@ -1,6 +1,8 @@
-### Fuller Feedback for Lab 08
+### Assessment for Lab 08
 
-Run on February 25, 06:02:58 AM.
+#### Total score: _95.75_ / _100_
+
+Run on February 25, 09:19:53 AM.
 
 
 #### System Files and Lab Directory Structure
@@ -77,7 +79,7 @@ Run on February 25, 06:02:58 AM.
 
 
 
-+ Pass: 100.0% of the tests passed. Expected at least 100%.
++  _50_ / _50_ : Pass: 100.0% of the tests passed. Expected at least 100%.
 
 
 ### Testing Mutants
@@ -126,4 +128,54 @@ Run on February 25, 06:02:58 AM.
 #### Testing Mutant 9 for failure
 
 + Pass: At least one test failed for Mutant 9
+
+
+#### Testing Mutant 10 for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - 3/1/2016 - 2 should be 2/28/2016, but this version prints 2016-02-27
+
+
+#### Testing Mutant 11 for failure
+
++ Pass: At least one test failed for Mutant 11
+
+
+#### Testing Mutant 12 for failure
+
++ Pass: At least one test failed for Mutant 12
+
+
+#### Testing Mutant 13 for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - Some dates don't have leading zeroes
+
+
+#### Testing Mutant 14 for failure
+
++ Pass: At least one test failed for Mutant 14
+
+
+#### Testing Mutant 15 for failure
+
++ Pass: At least one test failed for Mutant 15
+
+
+#### Testing Mutant 16 for failure
+
++ Fail: There is no test case for this mutant (since all tests pass).
+   - Reason - Jun 15, 2015 + 5 = Jun 16, 2015
+
+
+#### Testing Mutant 17 for failure
+
++ Pass: At least one test failed for Mutant 17
+
+
+#### Results
+
++  _45.75_ / _50_ : Fail: 82.35% of the tests passed, but the target is 90.0%.
+
+#### Total score: _95.75_ / _100_
 
