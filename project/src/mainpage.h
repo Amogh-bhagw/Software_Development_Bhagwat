@@ -4,7 +4,7 @@
  * @copyright 2019 3081 Staff, All rights reserved.
  */
 
-/*! \mainpage This is the Home Page for Passenger and PassengerFactory
+/*! \mainpage This is the Home Page for the Project for the transit Simulator
  *
  * \section intro_sec Introduction
  *
