@@ -4,13 +4,13 @@
 #### Step by step for instructions for CSE Labs machines or vole users
 
 **<port_number> below should be a number above 8000 that includes the last 3 digits of your student id.**
-**So, if your student id number is: 1459345, use 8345, or 9345**
+**So, if your student id number is: 1459345, use 8345, or 9345** a
 
 1. Navigate to base project directory(project/)  
 2. Make and run the server:
 ```
 $ cd src
-$ make 
+$ make
 $ cd ..
 $./build/bin/vis_sim <port_number>
 ```
@@ -20,7 +20,7 @@ $./build/bin/vis_sim <port_number>
 ```
 http://127.0.0.1:<port_number>/web_graphics/project.html
 ```
-  
+
 #### Step by step instructions for ssh users
 You can SSH using a Windows machine with Git Bash.
 ```
@@ -34,7 +34,7 @@ ssh -L <port number>:127.0.0.1:<port_number> <x500>@<cse_labs_computer>.cselabs.
 2. make and start server:
 ```
 $ cd src
-$ make 
+$ make
 $ cd ..
 $./build/bin/vis_sim <port_number>
 ```
@@ -44,7 +44,7 @@ $./build/bin/vis_sim <port_number>
 ```
 http://127.0.0.1:<port_number>/web_graphics/project.html
 ```
-**NOTE**: As part of your development process, you should ensure that **all Tests** pass before pushing any changes. 
+**NOTE**: As part of your development process, you should ensure that **all Tests** pass before pushing any changes.
 
 ### To Compile and Run Unit Tests created with Google Test:
 
@@ -55,5 +55,3 @@ http://127.0.0.1:<port_number>/web_graphics/project.html
 ### Style Check:
 
 - `[path_to_cpplint]/cpplint/cpplint-cse.sh --root=[path_target_dir] [file_name]`
-
-
