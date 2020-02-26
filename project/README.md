@@ -4,7 +4,7 @@
 #### Step by step for instructions for CSE Labs machines or vole users
 
 **<port_number> below should be a number above 8000 that includes the last 3 digits of your student id.**
-**So, if your student id number is: 1459345, use 8345, or 9345** aa
+**So, if your student id number is: 1459345, use 8345, or 9345** 
 
 1. Navigate to base project directory(project/)  
 2. Make and run the server:
