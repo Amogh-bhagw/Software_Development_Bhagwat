@@ -1,6 +1,6 @@
 ### Feedback for Lab 09
 
-Run on February 25, 18:02:46 PM.
+Run on February 25, 20:08:04 PM.
 
 
 #### Necessary Files and Structure
@@ -26,30 +26,20 @@ Run on February 25, 18:02:46 PM.
 
 #### .gitignore configured properly
 
-+ Fail: Check that file/directory "build" does not exist.
++ Pass: Check that file/directory "build" does not exist.
 
-     "build" found.
-
-+ Skip: Check that file/directory "build/bin/vis_sim" does not exist.
-
-  This test was not run because of an earlier failing test.
++ Pass: Check that file/directory "build/bin/vis_sim" does not exist.
 
 
 #### Compile Tests
 
-+ Skip: Change into directory "src".
++ Pass: Change into directory "src".
 
-  This test was not run because of an earlier failing test.
++ Pass: Check that make compiles.
 
-+ Skip: Check that make compiles.
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Change into directory "..".
++ Pass: Change into directory "..".
 
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that file "build/bin/vis_sim" exists.
-
-  This test was not run because of an earlier failing test.
++ Pass: Check that file "build/bin/vis_sim" exists.
 
