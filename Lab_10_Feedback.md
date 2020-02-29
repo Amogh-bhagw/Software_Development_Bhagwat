@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on February 25, 17:40:35 PM.
+Run on February 29, 13:30:36 PM.
 
 
 ### Necessary Files and Structure
@@ -70,11 +70,11 @@ Run on February 25, 17:40:35 PM.
 
 
 
-+ Skip: Check that directory "project" exists.
++ Skip: Check that directory "project/src" exists.
 
   This test was not run because of an earlier failing test.
 
-+ Skip: Change into directory "project".
++ Skip: Change into directory "project/src".
 
   This test was not run because of an earlier failing test.
 
