@@ -1,6 +1,6 @@
 ### Feedback for Lab 10
 
-Run on February 29, 13:30:36 PM.
+Run on March 01, 20:18:11 PM.
 
 
 ### Necessary Files and Structure
@@ -12,49 +12,218 @@ Run on February 29, 13:30:36 PM.
 
 ### Git Usage
 
-+ Fail: Run git ls-remote to check for existence of specific branch- Branch devel not found
++ Pass: Run git ls-remote to check for existence of specific branch- Branch devel found
 
-+ Skip: Checkout devel branch.
++ Pass: Checkout devel branch.
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Run git ls-remote gather all branches in repo
 
-  This test was not run because of an earlier failing test.
++ Pass: Run git ls-remote gather all branches in repo
 
-+ Skip: Checking for the correct number of branches
+		bf222c52d6a6021533bc4b03936ddb3cd8cc04a4	refs/heads/devel
 
-  This test was not run because of an earlier failing test.
+		bf222c52d6a6021533bc4b03936ddb3cd8cc04a4	refs/heads/fix/02-google-style-errors
+
+		f8029a5b09f8d9bcec9d9bfad53eec3ce6bfbd89	refs/heads/fix/08-compilation-errors
+
+		77084285802db2e3fa70cec23ca071de47049db5	refs/heads/master
+
+
+
++ Pass: Checking for the correct number of branches
+
+Sufficient branches found (found=2, required=2):
+
+fix/02-google-style-errors
+
+fix/08-compilation-errors
 
 
 #### Counting commits on devel
 
-+ Skip: Checkout devel branch.
++ Pass: Checkout devel branch.
 
-  This test was not run because of an earlier failing test.
 
-+ Skip: Gather commit history
 
-  This test was not run because of an earlier failing test.
++ Pass: Gather commit history
 
-+ Skip: Check git commit history
+		[Amogh Bhagwat] 2020-02-29 (HEAD -> devel, origin/fix/02-google-style-errors, origin/devel, fix/02-google-style-errors) Merge branch 'fix/08-compilation-errors' into devel -uncommented some code 
 
-  This test was not run because of an earlier failing test.
+		[Amogh Bhagwat] 2020-02-29 (origin/fix/08-compilation-errors, fix/08-compilation-errors) fix(bus,passenger,random_passenger_generator, stop): fix #8 "fixed commented codes" -Alot of code was commented out which were need in other parts of the code
+
+
+
+		[Amogh Bhagwat] 2020-02-29 Add src to proj 
+
+		[Amogh Bhagwat] 2020-02-29 Delete Src 
+
+
+		[Amogh Bhagwat] 2020-02-25 Merge branch 'master' of https://github.umn.edu/umn-csci-3081-s20/repo-bhagw018 
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+
+		[Amogh Bhagwat] 2020-02-25 Merge branch 'master' of https://github.umn.edu/umn-csci-3081-s20/repo-bhagw018 
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+		[Amogh Bhagwat] 2020-02-25 Merge branch 'master' of https://github.umn.edu/umn-csci-3081-s20/repo-bhagw018 
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+
+
+		[Amogh Bhagwat] 2020-02-25 Project 
+
+		[Amogh Bhagwat] 2020-02-25 Merge branch 'master' of https://github.umn.edu/umn-csci-3081-s20/repo-bhagw018 
+
+
+
+
+
+
+
+
+
+		[Amogh Bhagwat] 2020-02-24 Merge branch 'support-code' 
+
+		[Amogh Bhagwat] 2020-02-24 Merge branch 'support-code' of github.umn.edu:umn-csci-3081-s20/csci3081-shared-upstream into support-code 
+
+
+
+		[Amogh Bhagwat] 2020-02-24 Lab08 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		[Amogh Bhagwat] 2020-02-23 Merge branch 'master' of https://github.umn.edu/umn-csci-3081-s20/repo-bhagw018 
+
+		[Amogh Bhagwat] 2020-02-23 lab08 
+
+
+
+		[Amogh Bhagwat] 2020-02-22 lab08 
+
+
+		[Amogh Bhagwat] 2020-02-22 lab08 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		[Amogh Bhagwat] 2020-02-21 Lab 8 
+
+		[Amogh Bhagwat] 2020-02-21 Merge branch 'master' of https://github.umn.edu/umn-csci-3081-s20/repo-bhagw018 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
++ Pass: Check git commit history
+Sufficient commits (found=27,required=4)
 
 
 ### Git Issue Usage
 
 + Pass: Configuring GHI
 
-+ Pass: Run ghi for total number of open issues in Github repo (Found: 0)
++ Pass: Run ghi for total number of open issues in Github repo (Found: 1)
 
-+ Pass: Run ghi for total number of closed issues in Github repo (Found: 0)
+[OPEN issue #2] :  Code Not in Google Style  [enhancement]
 
-+ Fail: Run ghi for total number of issues in Github repo (Found: 0, Expected: 2) 
 
- [OPEN issue #] : 
 
-[CLOSED issue #] : 
+
+
++ Pass: Run ghi for total number of closed issues in Github repo (Found: 6)
+
+[CLOSED issue #8] :  Simulator is not compiling [bug]
+
+[CLOSED issue #7] :  Fix/02 google style errors ↑
+
+[CLOSED issue #6] :  Fix/02 google style errors ↑
+
+[CLOSED issue #5] :  fix(bus,config_manager, data_struct.h,passenger,passenger_factory, ↑
+
+[CLOSED issue #4] :  fix(bus,config_manager, data_struct.h,passenger,passenger_factory, ↑
+
+[CLOSED issue #1] :  Simulator Compile error [bug] 1
+
+
+
+
+
++ Pass: Run ghi for total number of issues in Github repo (Found: 7, Expected: 2) 
+
+ [OPEN issue #2] :  Code Not in Google Style  [enhancement]
+
+[CLOSED issue #8] :  Simulator is not compiling [bug]
+
+[CLOSED issue #7] :  Fix/02 google style errors ↑
+
+[CLOSED issue #6] :  Fix/02 google style errors ↑
+
+[CLOSED issue #5] :  fix(bus,config_manager, data_struct.h,passenger,passenger_factory, ↑
+
+[CLOSED issue #4] :  fix(bus,config_manager, data_struct.h,passenger,passenger_factory, ↑
+
+[CLOSED issue #1] :  Simulator Compile error [bug] 1
 
  
 
@@ -63,26 +232,17 @@ Run on February 29, 13:30:36 PM.
 
 ### Test that code on  devel compiles
 
-+ Fail: Checkout devel branch.
-
-<pre>error: pathspec 'devel' did not match any file(s) known to git.
-</pre>
++ Pass: Checkout devel branch.
 
 
 
-+ Skip: Check that directory "project/src" exists.
++ Pass: Check that directory "project/src" exists.
 
-  This test was not run because of an earlier failing test.
++ Pass: Change into directory "project/src".
 
-+ Skip: Change into directory "project/src".
++ Pass: Check that file "makefile" exists.
 
-  This test was not run because of an earlier failing test.
++ Pass: Check that make compiles.
 
-+ Skip: Check that file "makefile" exists.
 
-  This test was not run because of an earlier failing test.
-
-+ Skip: Check that make compiles.
-
-  This test was not run because of an earlier failing test.
 
