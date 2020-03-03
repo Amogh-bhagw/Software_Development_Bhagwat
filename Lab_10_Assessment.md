@@ -2,7 +2,7 @@
 
 #### Total score: _100.0_ / _100_
 
-Run on March 03, 13:17:58 PM.
+Run on March 03, 13:30:51 PM.
 
 
 ### Necessary Files and Structure
@@ -28,7 +28,7 @@ Run on March 03, 13:17:58 PM.
 
 		f8029a5b09f8d9bcec9d9bfad53eec3ce6bfbd89	refs/heads/fix/08-compilation-errors
 
-		ae2c075fefc2312f2ae891125239b612c473decd	refs/heads/master
+		18c097d75968a7582597def463e882d509ebe2db	refs/heads/master
 
 
 
@@ -196,7 +196,7 @@ Sufficient commits (found=33,required=4)
 
 + Pass: Run ghi for total number of open issues in Github repo (Found: 0)
 
-+ Pass: Run ghi for total number of closed issues in Github repo (Found: 7)
++ Pass: Run ghi for total number of closed issues in Github repo (Found: 6)
 
 [CLOSED issue #8] :  Simulator is not compiling [bug]
 
@@ -208,15 +208,13 @@ Sufficient commits (found=33,required=4)
 
 [CLOSED issue #4] :  fix(bus,config_manager, data_struct.h,passenger,passenger_factory, ↑
 
-[CLOSED issue #2] :  Code Not in Google Style  [enhancement]
-
 [CLOSED issue #1] :  Simulator Compile error [bug] 1
 
 
 
 
 
-+  _10.0_ / _10_ : Pass: Run ghi for total number of issues in Github repo (Found: 7, Expected: 2) 
++  _10.0_ / _10_ : Pass: Run ghi for total number of issues in Github repo (Found: 6, Expected: 2) 
 
  [OPEN issue #] : 
 
@@ -229,8 +227,6 @@ Sufficient commits (found=33,required=4)
 [CLOSED issue #5] :  fix(bus,config_manager, data_struct.h,passenger,passenger_factory, ↑
 
 [CLOSED issue #4] :  fix(bus,config_manager, data_struct.h,passenger,passenger_factory, ↑
-
-[CLOSED issue #2] :  Code Not in Google Style  [enhancement]
 
 [CLOSED issue #1] :  Simulator Compile error [bug] 1
 
