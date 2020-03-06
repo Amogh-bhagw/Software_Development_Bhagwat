@@ -75,10 +75,12 @@ TEST_F(RouteTests, Constructor){
   EXPECT_EQ(route_->GetDestinationStop(), stop1);
   EXPECT_EQ(route_->GetName(), "Magic Route");
   route_->NextStop();
+  EXPECT_EQ(route_->GetNextStopDistance(), 8) << "Check next distance";
   EXPECT_EQ(route_->PrevStop(), stop1);
   EXPECT_EQ(route_->GetDestinationStop(), stop2);
   EXPECT_EQ(route_->IsAtEnd(), false);
   route_->NextStop();
+  EXPECT_EQ(route_->GetNextStopDistance(), 1) << "Check next distance2";
   EXPECT_EQ(route_->PrevStop(), stop2);
   EXPECT_EQ(route_->GetDestinationStop(), stop3);
   EXPECT_EQ(route_->IsAtEnd(), false);

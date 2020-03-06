@@ -77,6 +77,32 @@ TEST_F(PassengerTests, Constructor) {
   EXPECT_EQ(passenger->IsOnBus(), true);
   EXPECT_EQ(passenger1->GetDestination(), 2) << "Check if set correctly";
   EXPECT_EQ(passenger2->GetDestination(), 100) << "Check to see large number";
+  EXPECT_EQ(passenger3->GetDestination(), -5) << "negative number";
+  EXPECT_EQ(passenger4->GetDestination(), 2000) << "larger number";
+  EXPECT_EQ(passenger1->GetTotalWait(), 0);
+};
+
+TEST_F(PassengerTests, Update){
+  passenger1->Update();
+  passenger1->Update();
+  passenger1->Update();
+  passenger1->GetOnBus();
+  EXPECT_EQ(passenger1->GetTotalWait(), 4);
+  passenger1->Update();
+  passenger1->GetOnBus();
+  EXPECT_EQ(passenger1->GetTotalWait(), 4) << "check to see if time on bus resets to one";
+  passenger->Update();
+  passenger->Update();
+  passenger->Update();
+  passenger->Update();
+  passenger->Update();
+  passenger->Update();
+  passenger->Update();
+  passenger->Update();
+  EXPECT_EQ(passenger->GetTotalWait(), 8) << "large numbers of update";
+  passenger->GetOnBus();
+  EXPECT_EQ(passenger->GetTotalWait(), 9);
+
 };
 
 TEST_F(PassengerTests, GetOnBus) {

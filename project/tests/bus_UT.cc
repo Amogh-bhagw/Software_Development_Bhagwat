@@ -201,6 +201,7 @@ TEST_F(BusTests, LoadPassenger){
 };
 
 TEST_F(BusTests, Move){
+  EXPECT_EQ(route_->PrevStop(), stop1) << "check starting postion";
   EXPECT_EQ(bus->Move(), false);
 
     EXPECT_EQ(bus->GetNextStop(), stop2) <<"Not stop1";
@@ -214,6 +215,8 @@ TEST_F(BusTests, Move){
   EXPECT_EQ(bus->GetNextStop(), stop3)<<"Not stop3";
 
   EXPECT_EQ(bus->Move(), false) << "error3";
+
+  
 
   EXPECT_EQ(bus->GetNextStop(), stop4)<<"Not stop4";
 
