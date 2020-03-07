@@ -9,6 +9,7 @@
 #include "../src/data_structs.h"
 #include "../src/passenger_generator.h"
 #include "../src/stop.h"
+#include "../src/random_passenger_generator.h"
 
 using namespace std;
 
@@ -17,6 +18,9 @@ using namespace std;
 *******************************************************/
 class RouteTests : public ::testing::Test {
 protected:
+  list<double> x;
+  list<Stop *> y;
+
   Stop *stop1, *stop2, *stop3;
   int num_stops;
   double dis1, dis2, dis3;
@@ -24,7 +28,7 @@ protected:
 
   Stop ** stop_;
   double *distance_;
-  PassengerGenerator * generator;
+  RandomPassengerGenerator * generator;
   Route *route_;
 
   virtual void SetUp(){
@@ -49,8 +53,15 @@ protected:
     distance_[0] = dis1;
     distance_[1] = dis2;
     distance_[2] = dis3;
+    x.push_back(dis1);
+    x.push_back(dis2);
+    x.push_back(dis3);
 
+    y.push_back(stop1);
+    y.push_back(stop2);
+    y.push_back(stop3);
 
+    generator = new RandomPassengerGenerator(x, y);
     route_ = new Route(name, stop_, distance_, num_stops, generator);
   }
 
@@ -59,6 +70,7 @@ protected:
       delete stop_[i];
 
     }
+
     delete[] stop_;
     delete[] distance_;
     delete route_;
