@@ -50,6 +50,15 @@ class StartCommand : public MyWebServerCommand {
         int numTimeSteps;
 };
 
+	class PauseCommand : public MyWebServerCommand {
+		public:
+			PauseCommand(VisualizationSimulator* sim);
+			void execute(MyWebServerSession* session, picojson::value& command, MyWebServerSessionState* state) override;
+		private:
+			VisualizationSimulator* mySim;
+	};
+
+
 class UpdateCommand : public MyWebServerCommand {
     public:
         UpdateCommand(VisualizationSimulator* sim);

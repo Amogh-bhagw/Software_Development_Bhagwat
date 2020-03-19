@@ -19,11 +19,12 @@ class VisualizationSimulator {
 
         void Start(const std::vector<int>&, const int&);
         void Update();
+        void Pause();
 
     private:
         WebInterface* webInterface_;
         ConfigManager* configManager_;
-       
+
         std::vector<int> busStartTimings_;
         std::vector<int> timeSinceLastBus_;
         int numTimeSteps_;
@@ -32,6 +33,7 @@ class VisualizationSimulator {
         std::vector<Route *> prototypeRoutes_;
         std::vector<Bus *> busses_;
 
+        bool ispaused = false;
         int busId = 1000;
 };
 
