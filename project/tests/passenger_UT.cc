@@ -95,7 +95,6 @@ TEST_F(PassengerTests, Update){
   EXPECT_EQ(passenger->GetTotalWait(), 9);
 
 };
-<<<<<<< HEAD
 
 TEST_F(PassengerTests, GetOnBus) {
   EXPECT_EQ(passenger->IsOnBus(), false);
@@ -171,5 +170,3 @@ TEST_F(PassengerTests, GetDestination){
     EXPECT_GE(p1, 0);
     EXPECT_GE(p2, 0);
  };
-=======
->>>>>>> support-code

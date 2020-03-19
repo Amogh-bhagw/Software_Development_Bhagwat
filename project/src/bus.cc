@@ -6,26 +6,24 @@
 #include "src/bus.h"
 
 Bus::Bus(std::string name, Route * out, Route * in,
-                         int capacity, double speed) {
-  name_ = name;
-  outgoing_route_ = out;
-  incoming_route_ = in;
-  passenger_max_capacity_ = capacity;
-  speed_ = speed;
-  distance_remaining_ = 0;
-  next_stop_ = out->GetDestinationStop();
-  unloader_ = new PassengerUnloader;
-  loader_ = new PassengerLoader;
+  int capacity, double speed) {
+    name_ = name;
+    outgoing_route_ = out;
+    incoming_route_ = in;
+    passenger_max_capacity_ = capacity;
+    speed_ = speed;
+    distance_remaining_ = 0;
+    next_stop_ = out->GetDestinationStop();
+    unloader_ = new PassengerUnloader;
+    loader_ = new PassengerLoader;
 }
 
 bool Bus::IsTripComplete() {
   bool is_complete = false;
-
   // short-circuit: outgoing has to be completed first
   if (outgoing_route_->IsAtEnd() && incoming_route_->IsAtEnd()) {
     is_complete = true;
   }
-
   return is_complete;
 }
 
@@ -34,8 +32,8 @@ bool Bus::LoadPassenger(Passenger * new_passenger) {
   bool added_passenger = false;
   if (loader_->LoadPassenger(new_passenger, passenger_max_capacity_,
       &passengers_) > 0) {
-    added_passenger = true;
-    // revenue_ += 0; //No revenue tracking at this time.
+        added_passenger = true;
+        // revenue_ += 0; //No revenue tracking at this time.
   }
   return added_passenger;
 }
@@ -45,58 +43,43 @@ bool Bus::Move() {
   // update all passengers FIRST
   // new passengers will get "updated" when getting on the bus
   for (std::list<Passenger *>::iterator it = passengers_.begin();
-                                  it != passengers_.end(); it++) {
+  it != passengers_.end(); it++) {
     (*it)->Update();
   }
-
   bool did_move = true;
-
-
   // travel (happens in all cases, neg distance indicates ready to unload/load)
-
-
   if (speed_ > 0) {
     distance_remaining_ -= speed_;
   } else {
     did_move = false;
   }
     int passengers_handled = 0;  // counts those on or off bus at this location
-
-
     // if there's no more distance
     // (OFF BY ONE ERROR ISSUE - do we unload if exactly zero after a move?
     // or only if there was time remaining?)
-
     if (distance_remaining_ <= 0) {
         did_move = false;
-
         // Determine which route we are on
         Route * current_route = outgoing_route_;
         if (outgoing_route_->IsAtEnd()) {
             current_route = incoming_route_;
             if (!incoming_route_->IsAtEnd()) {
                 // Only get here if we are on our incoming route
-
-
                 passengers_handled += UnloadPassengers();  // unload
                 passengers_handled += next_stop_->LoadPassengers(this);  // load
-
                 // if any passengers on or off,
                 // all distance to next stop is left
                 // but, if we didn't handle any passengers here,
                 // any negative will
                 // affect the distance remaining (see addition below)
-
                 if (passengers_handled != 0) {
                     distance_remaining_ = 0;
                     did_move = true;  // We move if we have gotten passengers?
                 }
-
-                current_route->NextStop();
+                current_route->ToNextStop();
                 next_stop_ = current_route->GetDestinationStop();
                 distance_remaining_ += current_route->GetNextStopDistance();
                 return did_move;
-
             } else {
                 speed_ = 0;
                 distance_remaining_ = 999;
@@ -120,7 +103,7 @@ bool Bus::Move() {
             did_move = true;
         }
 
-        current_route->NextStop();
+        current_route->ToNextStop();
 
         // If we have incremented past the end of the outgoing route, set our
         // next stop to actually be the first stpo in incoming
@@ -156,7 +139,7 @@ void Bus::Report(std::ostream& out) {
   out << "Distance to next stop: " << distance_remaining_ << std::endl;
   out << "\tPassengers (" << passengers_.size() << "): " << std::endl;
   for (std::list<Passenger *>::iterator it = passengers_.begin();
-                                        it != passengers_.end(); it++) {
+  it != passengers_.end(); it++) {
     (*it)->Report(out);
   }
 }

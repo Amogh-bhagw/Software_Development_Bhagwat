@@ -86,30 +86,30 @@ TEST_F(RouteTests, Constructor){
   EXPECT_EQ(route_->GetTotalRouteDistance(), 10) << "check to see total distance";
   EXPECT_EQ(route_->GetDestinationStop(), stop1);
   EXPECT_EQ(route_->GetName(), "Magic Route");
-  route_->NextStop();
+  route_->ToNextStop();
   EXPECT_EQ(route_->GetNextStopDistance(), 8) << "Check next distance";
   EXPECT_EQ(route_->PrevStop(), stop1);
   EXPECT_EQ(route_->GetDestinationStop(), stop2);
   EXPECT_EQ(route_->IsAtEnd(), false);
-  route_->NextStop();
+  route_->ToNextStop();
   EXPECT_EQ(route_->GetNextStopDistance(), 1) << "Check next distance2";
   EXPECT_EQ(route_->PrevStop(), stop2);
   EXPECT_EQ(route_->GetDestinationStop(), stop3);
   EXPECT_EQ(route_->IsAtEnd(), false);
-  route_->NextStop();
+  route_->ToNextStop();
   EXPECT_EQ(route_->IsAtEnd(), true);
 
 };
 
 TEST_F(RouteTests, IsAtEnd){
   EXPECT_EQ(route_->IsAtEnd(), false);
-  route_->NextStop();
+  route_->ToNextStop();
   EXPECT_EQ(route_->IsAtEnd(), false);
-  route_->NextStop();
+  route_->ToNextStop();
   EXPECT_EQ(route_->IsAtEnd(), false);
-  route_->NextStop();
+  route_->ToNextStop();
   EXPECT_EQ(route_->IsAtEnd(), true);
-  route_->NextStop();
+  route_->ToNextStop();
   EXPECT_EQ(route_->IsAtEnd(), true) << "check to see what happens after all stops";
 
 };
