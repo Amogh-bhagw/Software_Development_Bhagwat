@@ -26,12 +26,12 @@ class Stop;
 class Bus {
  public:
   Bus(std::string name, Route * out, Route * in, int capacity = 60,
-                                                 double speed = 1);
+      double speed = 1);
   bool IsTripComplete();
   bool LoadPassenger(Passenger *);  // returning revenue delta
   bool Move();
   void Update();
-  void Report(std::ostream&);
+  virtual void Report(std::ostream&);
 
   // Vis Getters
   void UpdateBusData();
@@ -41,7 +41,7 @@ class Bus {
   size_t GetNumPassengers() const { return passengers_.size(); }
   int GetCapacity() const { return passenger_max_capacity_; }
 
- private:
+protected:  // Might need to change back to private depanding on Piazza post
   int UnloadPassengers();  // returning revenue delta
   // bool Refuel();
   PassengerUnloader * unloader_;
