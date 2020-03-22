@@ -3,6 +3,7 @@
 
 #include "bus.h"
 #include "route.h"
+#include "bus_factory.h"
 
 VisualizationSimulator::VisualizationSimulator(WebInterface* webI, ConfigManager* configM) {
     webInterface_ = webI;
@@ -62,7 +63,8 @@ if(ispaused != true){
             Route * outbound = prototypeRoutes_[2 * i];
             Route * inbound = prototypeRoutes_[2 * i + 1];
 
-            busses_.push_back(new Bus(std::to_string(busId), outbound->Clone(), inbound->Clone(), 60, 1));
+            BusFactory bFactory;
+            busses_.push_back(bFactory.GenerateBus(std::to_string(busId), outbound->Clone(), inbound->Clone()));  // Add generate bus factory here
             busId++;
 
             timeSinceLastBus_[i] = busStartTimings_[i];
