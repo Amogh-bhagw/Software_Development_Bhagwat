@@ -3,8 +3,8 @@
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
-#ifndef BUS_H_
-#define BUS_H_
+#ifndef SRC_BUS_H_
+#define SRC_BUS_H_
 
 #include <iostream>
 #include <list>
@@ -28,6 +28,17 @@ class Bus {
   Bus(std::string name, Route * out, Route * in, int capacity = 60,
       double speed = 1);
   bool IsTripComplete();
+
+  /**
+   * @brief Loading a Passenger
+   * The function lets you know if
+   * the passenger you passed in
+   * has been loaded on the bus.
+   *
+   * @param passenger The passenger you want to load
+   *
+   * @return True if loaded or False if not.
+   */
   bool LoadPassenger(Passenger *);  // returning revenue delta
   bool Move();
   void Update();
@@ -41,7 +52,7 @@ class Bus {
   size_t GetNumPassengers() const { return passengers_.size(); }
   int GetCapacity() const { return passenger_max_capacity_; }
 
-protected:  // Might need to change back to private depanding on Piazza post
+ protected:  // Might need to change back to private depanding on Piazza post
   int UnloadPassengers();  // returning revenue delta
   // bool Refuel();
   PassengerUnloader * unloader_;
@@ -65,4 +76,4 @@ protected:  // Might need to change back to private depanding on Piazza post
   // Vis data for bus
   BusData bus_data_;
 };
-#endif  // BUS_H_
+#endif  // SRC_BUS_H_
