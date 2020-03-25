@@ -72,12 +72,15 @@ bool Bus::Move() {
                 // but, if we didn't handle any passengers here,
                 // any negative will
                 // affect the distance remaining (see addition below)
-                if (passengers_handled == 0) {
-                  std::cout << "Stop Skipped" << '\n';
-                }
                 if (passengers_handled != 0) {
                     distance_remaining_ = 0;
                     did_move = true;  // We move if we have gotten passengers?
+                } else {
+                    // This is where we check if a bus stop has been skipped
+                    std::cout << "Skipped Stop: "
+                    << next_stop_->GetId()
+                    << " Bus ID: " << name_
+                    << std::endl;
                 }
                 current_route->ToNextStop();
                 next_stop_ = current_route->GetDestinationStop();
@@ -101,12 +104,15 @@ bool Bus::Move() {
         // but, if we didn't handle any passengers here, any negative will
         // affect the distance remaining (see addition below)
 
-        if (passengers_handled == 0) {
-          std::cout << "Stop Skipped" << '\n';
-        }
         if (passengers_handled != 0) {
             distance_remaining_ = 0;
             did_move = true;
+        } else {
+            // This is where we check if a bus stop has been skipped
+            std::cout << "Skipped Stop: "
+            << next_stop_->GetId()
+            << " Bus ID: " << name_
+            << std::endl;
         }
 
         current_route->ToNextStop();

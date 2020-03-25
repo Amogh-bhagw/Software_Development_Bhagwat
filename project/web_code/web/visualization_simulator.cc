@@ -1,20 +1,24 @@
+/**
+ * @file visualization_simulator.cc
+ *
+ * @copyright 2020 Amogh Bhagwat, All rights reserved.
+ */
+#include "web_code/web/visualization_simulator.h"
 
-#include "visualization_simulator.h"
+#include "src/bus.h"
+#include "src/route.h"
+#include "src/bus_factory.h"
 
-#include "bus.h"
-#include "route.h"
-#include "bus_factory.h"
-
-VisualizationSimulator::VisualizationSimulator(WebInterface* webI, ConfigManager* configM) {
+VisualizationSimulator::VisualizationSimulator(WebInterface* webI,
+  ConfigManager* configM) {
     webInterface_ = webI;
     configManager_ = configM;
 }
 
-VisualizationSimulator::~VisualizationSimulator() {
+VisualizationSimulator::~VisualizationSimulator() {}
 
-}
-
-void VisualizationSimulator::Start(const std::vector<int>& busStartTimings, const int& numTimeSteps) {
+void VisualizationSimulator::Start(const std::vector<int>& busStartTimings,
+  const int& numTimeSteps) {
     busStartTimings_ = busStartTimings;
     numTimeSteps_ = numTimeSteps;
 
@@ -32,21 +36,24 @@ void VisualizationSimulator::Start(const std::vector<int>& busStartTimings, cons
         prototypeRoutes_[i]->UpdateRouteData();
         webInterface_->UpdateRoute(prototypeRoutes_[i]->GetRouteData());
     }
-
 }
 
-void VisualizationSimulator::Pause(){
-    if(ispaused == true){
+void VisualizationSimulator::Pause() {
+    // if the sim is already pause
+    // we change the variable to false,
+    // so we can continue to run the sim.
+    if (ispaused == true) {
         ispaused = false;
-    }
-    else{
-      ispaused = true;
+    } else {
+       ispaused = true;
     }
 }
 
 void VisualizationSimulator::Update() {
-
-if(ispaused != true){
+// This for loop incases the whole update
+// method. This is how the pause
+// function is implemented.
+if(ispaused != true) {
     simulationTimeElapsed_++;
 
     std::cout << "~~~~~~~~~~ The time is now " << simulationTimeElapsed_;
@@ -59,12 +66,13 @@ if(ispaused != true){
     for (int i = 0; i < static_cast<int>(timeSinceLastBus_.size()); i++) {
         // Check if we need to make a new bus
         if (0 >= timeSinceLastBus_[i]) {
-
             Route * outbound = prototypeRoutes_[2 * i];
             Route * inbound = prototypeRoutes_[2 * i + 1];
 
+            // Add generate bus factory here
             BusFactory bFactory;
-            busses_.push_back(bFactory.GenerateBus(std::to_string(busId), outbound->Clone(), inbound->Clone()));  // Add generate bus factory here
+            busses_.push_back(bFactory.GenerateBus(std::to_string(busId),
+            outbound->Clone(), inbound->Clone()));
             busId++;
 
             timeSinceLastBus_[i] = busStartTimings_[i];
