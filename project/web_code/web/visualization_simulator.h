@@ -1,38 +1,54 @@
-
-#ifndef VISUALIZATION_SIMULATOR_H_
-#define VISUALIZATION_SIMULATOR_H_
+/**
+ * @file visualization_simulator.h
+ *
+ * @copyright 2020 Amogh Bhagwat, All rights reserved.
+ */
+#ifndef WEB_VISUALIZATION_SIMULATOR_H_
+#define WEB_VISUALIZATION_SIMULATOR_H_
 
 #include <vector>
 #include <list>
 
-#include "web_interface.h"
-#include "config_manager.h"
+#include "web_code/web/web_interface.h"
+#include "src/config_manager.h"
 
 class Route;
 class Bus;
 class Stop;
 
 class VisualizationSimulator {
-    public:
-        VisualizationSimulator(WebInterface*, ConfigManager*);
-        ~VisualizationSimulator();
+ public:
+  VisualizationSimulator(WebInterface*, ConfigManager*);
+  ~VisualizationSimulator();
 
-        void Start(const std::vector<int>&, const int&);
-        void Update();
+  void Start(const std::vector<int>&, const int&);
+  void Update();
 
-    private:
-        WebInterface* webInterface_;
-        ConfigManager* configManager_;
-       
-        std::vector<int> busStartTimings_;
-        std::vector<int> timeSinceLastBus_;
-        int numTimeSteps_;
-        int simulationTimeElapsed_;
+  /**
+   * @brief Resumes or pauses the sim.
+   * Everytime the pause button is pressed
+   * the bool value ispaused switchs to
+   * true if the sim is already paused
+   * false if the sim is running.
+   * The ispaused variable is then
+   * used in the Update() function.
+   */
+  void Pause();
 
-        std::vector<Route *> prototypeRoutes_;
-        std::vector<Bus *> busses_;
+ private:
+  WebInterface* webInterface_;
+  ConfigManager* configManager_;
 
-        int busId = 1000;
+  std::vector<int> busStartTimings_;
+  std::vector<int> timeSinceLastBus_;
+  int numTimeSteps_;
+  int simulationTimeElapsed_;
+
+  std::vector<Route *> prototypeRoutes_;
+  std::vector<Bus *> busses_;
+
+  bool ispaused = false;
+  int busId = 1000;
 };
 
-#endif // VISUALIZATION_SIMULATOR_H_
+#endif  // WEB_VISUALIZATION_SIMULATOR_H_

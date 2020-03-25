@@ -24,3 +24,20 @@ STOP, Ridder Arena, 44.978058, -93.229176, .05
 STOP, Pleasant Street at Jones-Eddy Circle, 44.978366, -93.236038, .1
 STOP, Bruininks Hall, 44.974549, -93.236927, .3
 STOP, Blegen Hall, 44.972638, -93.243591, 0
+
+ROUTE, East & West bank Dorms
+
+STOP, Middlebrook Hall, 44.969365, -93.240627, .1
+STOP, Stanford Hall, 44.980800, -93.239972, .3
+STOP, 17th Ave, 44.978686, -93.231454, .05
+STOP, Territorial Hall, 44.972436, -93.227462, .08
+STOP, Centennial Hall, 44.972246, -93.230186, .025
+STOP, Pioneer Hall, 44.970673, -93.230281, .01
+STOP, Frontier Hall, 44.970310, -93.228122, .25
+
+ROUTE, St.Paul & East Dorms
+
+STOP, Frontier Hall, 44.970310, -93.228122, .25
+STOP, Bailey Hall, 44.985047, -93.184806, .1
+STOP, Comestock Hall, 44.972748, -93.237090, .03
+STOP, Middlebrook Hall, 44.969365, -93.240627, .1

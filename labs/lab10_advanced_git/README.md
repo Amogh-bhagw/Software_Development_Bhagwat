@@ -56,15 +56,25 @@ Notice in the image above that the "Simulation lag" bug is issue \#3. To address
 
 <hr>
 
+### Steps before you start the lab
+
+1. Finish lab09 and make sure your code compiles.
+2. `git checkout master`  
+3. `git pull`
+4. Delete the `src` directory in `repo-x500/project/`
+5. Stage (i.e. `git add`), commit (i.e. `git commit`) and push (i.e. `git push`) your changes into your remote repo.
+6. Replace the `src` directory you just deleted with the `src` directory in the `lab10_advanced_git/` directory.  
+7. Stage (i.e. `git add`), commit (i.e. `git commit`) and push (i.e. `git push`) your changes into your remote repo.  
+8. Compile your project code and see if there are any changes.
+
+<hr>
+
 ### Getting Started with devel
 
 **Start preparing your repo.**  If your local repo differs from the server, you should commit and push before starting this process. In your `repo-<username>` repo:
 
 ```
-git checkout support-code
-git pull upstream support-code
 git checkout master
-git merge support-code
 git checkout -b devel
 git push --set-upstream origin devel
 ```
@@ -77,16 +87,6 @@ After you have pushed the branch, you can move between branches using checkout w
 
 To confirm which branch you are currently working on and to see a list of all branches use `git branch`.
 
-<hr>
-
-### Steps before you start the lab
-
-1. Finish lab09 and make sure your code compiles.
-2. Delete the `src` directory in `repo-x500/project/`
-3. Stage (i.e. `git add`), commit (i.e. `git commit`) and push (i.e. `git push`) your changes into your remote repo.
-4. Replace the `src` directory you just deleted with the `src` directory in the `lab10_advanced_git/` directory.  
-5. Stage (i.e. `git add`), commit (i.e. `git commit`) and push (i.e. `git push`) your changes into your remote repo.  
-6. Compile your project code and see if there are any changes.
 
 <hr>
 
@@ -137,7 +137,7 @@ As part of good documentation, it is important to record how the code was modifi
 
 >The default editor is vim. If you want another editor, see the git usage document for how to change that.
 >Also, previous labs are a good resource to remember git syntax and functionality.
->Make sure to let your TA know if you reach a dead end. 
+>Make sure to let your TA know if you reach a dead end.
 
 Start the commit process with
 
@@ -196,14 +196,27 @@ We would normally suggest that you delete the branch, but then we won't be able 
 
 ### Repeat
 
-For the other issue related to the Google style, repeat the above process of creating a branch, working on the enhancment, merging the branch back into _devel_, and resolving the issue in Github. To finish the enhancment for this issue, fix the errors from the output of cpplint after running it from the src directory in your project directory (i.e. `repo-x500/project/src/`) run `../../cpplint/cpplint-cse.sh --root=. *.cc *.h`.
+For the other issue related to the Google style, repeat the above process of creating a branch, working on the enhancment, merging the branch back into _devel_, and resolving the issue in Github. To finish the enhancment for this issue, fix the errors from the output of cpplint after running it from the src directory in your project directory (i.e. `repo-x500/project/src/`) run `../../cpplint/cpplint-cse.sh --root=.. *.cc *.h`.
 
 <hr>
 
 #### Parting Thoughts
+
+Since we injected the bug directly into `master`, our `master` branch will not compile. So, **you need to merge your `devel` branch into `master` so that your `master` contains code that compiles.**  
 
 Keep in mind that the issues are there to remind you what needs doing and fixing. This means that you use it like a todo list, writing things down as they occur to you.
 
 It probably took you awhile in this lab to add the issue, make the branch, then merge it back into devel after the changes were made. This will go very quickly once you get in the habit, and we think you will eventually appreciate the documentation of the changes that have been made and the ones that still need to be made.
 
 If you are addressing one of the priority points, follow this full process of issues and branching (and it might involve multiple issues and branches). But you don't have to do this _every_ time you make a change! If you have something minor -- skip making an issue, make the change in the devel branch, and use the command line for commit messages. The important part is to be consistent.
+
+
+---
+
+### Note on feedback regeneration
+
+To trigger a feedback regeneration for this lab, you must modify a (any) file in `labs/lab10_advanced_git`.
+
+The feedback server looks for changes in that folder and only regenerates if something within it has changed. Since the work for this lab will be done in `/project`, it will not regenerate automatically when you change files in that directory.
+
+I would recommend that you just make a trivial change to the this file (e.g. add a word) to trigger the feedback regeneration!
