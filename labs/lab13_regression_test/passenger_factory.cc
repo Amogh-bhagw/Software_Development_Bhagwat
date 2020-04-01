@@ -7,7 +7,7 @@
 #include <string>
 #include "src/passenger_factory.h"
 
-/* 
+/*
  * if CONSPASS is defined, every passenger will have the same name and desination
  * which may be helpful for regression testing!
  *
