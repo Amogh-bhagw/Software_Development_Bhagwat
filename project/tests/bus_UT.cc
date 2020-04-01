@@ -48,8 +48,8 @@ class BusTests : public ::testing::Test {
    Bus *bus;
 
    virtual void SetUp() {
-     passenger1 = new Passenger(2, "Amogh");
      passenger = new Passenger(5, "Help");
+     passenger1 = new Passenger(2, "Amogh");
      passenger2 = new Passenger(4, "John");
      passenger3 = new Passenger(6, "Doe");
      passenger4 = new Passenger(3, "Sour");
