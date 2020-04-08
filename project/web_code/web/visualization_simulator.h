@@ -8,9 +8,12 @@
 
 #include <vector>
 #include <list>
+#include <iostream>
 
 #include "web_code/web/web_interface.h"
 #include "src/config_manager.h"
+#include "src/IObservable.h"
+#include "src/IObserver.h"
 
 class Route;
 class Bus;
@@ -33,7 +36,10 @@ class VisualizationSimulator {
    * The ispaused variable is then
    * used in the Update() function.
    */
-  void Pause();
+  void TogglePause();
+
+  void ClearListeners();
+  void AddListener(std::string * id, IObserver * observer);
 
  private:
   WebInterface* webInterface_;
@@ -48,6 +54,7 @@ class VisualizationSimulator {
   std::vector<Bus *> busses_;
 
   bool ispaused = false;
+
   int busId = 1000;
 };
 

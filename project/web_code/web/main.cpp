@@ -33,6 +33,7 @@ int main(int argc, char**argv) {
     state.commands["initRoutes"] = new InitRoutesCommand(cm);
 		// Will trigger the pause execute() fucntion when pressed.
 		state.commands["pause"] = new PauseCommand(mySim);
+		state.commands["listen"] = new AddListenerCommand(mySim);
 
 		WebServerWithState<MyWebServerSession, MyWebServerSessionState> server(state, port);
 		while (true) {

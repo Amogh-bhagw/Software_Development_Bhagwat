@@ -143,6 +143,7 @@ bool Bus::Move() {
 void Bus::Update() {  // using common Update format
   Move();
   UpdateBusData();
+  NotifyObservers(&bus_data_);
 }
 
 void Bus::Report(std::ostream& out) {
