@@ -38,7 +38,7 @@ void VisualizationSimulator::Start(const std::vector<int>& busStartTimings,
     }
 }
 
-void VisualizationSimulator::Pause() {
+void VisualizationSimulator::TogglePause() {
     // if the sim is already pause
     // we change the variable to false,
     // so we can continue to run the sim.
@@ -47,6 +47,22 @@ void VisualizationSimulator::Pause() {
     } else {
        ispaused = true;
     }
+}
+
+void VisualizationSimulator::ClearListeners() {
+  for(std::vector<Bus *>::const_iterator iter = busses_.begin(); iter != busses_.end();
+     ++iter) {
+         (*iter)->ClearObservers();
+       }
+}
+
+void VisualizationSimulator::AddListener(std::string * id, IObserver * observer) {
+  for(std::vector<Bus *>::const_iterator iter = busses_.begin(); iter != busses_.end();
+     ++iter) {
+       if((*iter)->GetName() == *id) {
+         (*iter)->RegisterObserver(observer);
+       }
+     }
 }
 
 void VisualizationSimulator::Update() {
