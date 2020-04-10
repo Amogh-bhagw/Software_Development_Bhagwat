@@ -28,8 +28,8 @@ bool rLocalSimulator2::Start() {
   std::list<Stop *> CC_EWD_stops_list;
   std::list<Stop *> CC_SED_stops_list;
 
-  //Staticly defined objects get destroyed at end of Start()!
-  //Must be dynamic...
+  // Staticly defined objects get destroyed at end of Start()!
+  // Must be dynamic...
 
   // CC East and West bank dorm stops
   Stop * stop_CC_EWD_1 = new Stop(0, 44.969365, -93.240627);
@@ -107,8 +107,7 @@ bool rLocalSimulator2::Start() {
   CC_EWD_probs.push_back(.025);  // Centennial Hall
   CC_EWD_probs.push_back(.01);  // Pioneer Hall
   CC_EWD_probs.push_back(.25);  // Frontier Hall
-  //TODO: is this always true? If so, we may want to reduce the length of probs to_char_type
-  //        remove possibility of generating passengers with nowhere to go
+
 
   std::list<double> CC_SED_probs;
   CC_SED_probs.push_back(.25);  // Frontier Hall
@@ -117,22 +116,26 @@ bool rLocalSimulator2::Start() {
   CC_SED_probs.push_back(.1);  // Middlebrook Hall
 
 
-  //Staticly defined objects get destroyed at end of Start()!
-  //Must be dynamic...
-  //RandomPassengerGenerator CC_EWD_generator(CC_EWD_probs, CC_EWD_stops_list);
-  //RandomPassengerGenerator CC_SED_generator(CC_SED_probs, CC_SED_stops_list);
+  // Staticly defined objects get destroyed at end of Start()!
+  // Must be dynamic...
+  // RandomPassengerGenerator CC_EWD_generator(CC_EWD_probs, CC_EWD_stops_list);
+  // RandomPassengerGenerator CC_SED_generator(CC_SED_probs, CC_SED_stops_list);
 
- RtestPassengerGenerator * CC_EWD_generator = new RtestPassengerGenerator (CC_EWD_probs, CC_EWD_stops_list);
- RtestPassengerGenerator * CC_SED_generator = new RtestPassengerGenerator (CC_SED_probs, CC_SED_stops_list);
+  RtestPassengerGenerator * CC_EWD_generator =
+  new RtestPassengerGenerator (CC_EWD_probs, CC_EWD_stops_list);
+  RtestPassengerGenerator * CC_SED_generator =
+  new RtestPassengerGenerator (CC_SED_probs, CC_SED_stops_list);
 
-  //Test to ensure generators are working
-  //Helpful for debugging
-  //CC_EWD_generator.GeneratePassengers();
-  //CC_SED_generator.GeneratePassengers();
+  // Test to ensure generators are working
+  // Helpful for debugging
+  // CC_EWD_generator.GeneratePassengers();
+  // CC_SED_generator.GeneratePassengers();
 
-  //Again, MUST be dynamic...
-  //Route CC_EWD("Campus Connector - Eastbound", CC_EWD_stops, CC_EWD_distances, 7, &CC_EWD_generator);
-  //Route CC_SED("Campus Connector - Westbound", CC_SED_stops, CC_SED_distances, 4, &CC_SED_generator);
+  // Again, MUST be dynamic...
+  // Route CC_EWD("Campus Connector - Eastbound",
+  // CC_EWD_stops, CC_EWD_distances, 7, &CC_EWD_generator);
+  // Route CC_SED("Campus Connector - Westbound",
+  // CC_SED_stops, CC_SED_distances, 4, &CC_SED_generator);
 
   Route * CC_EWD = new Route("Campus Connector - East & West bank dorms",
   CC_EWD_stops, CC_EWD_distances, 7, CC_EWD_generator);
@@ -147,12 +150,12 @@ bool rLocalSimulator2::Start() {
 
   bus_counters_.push_back(10000);
 
-  //This will eventually be replaced by configuration/command line argument
+  // This will eventually be replaced by configuration/command line argument
   bus_start_timings_.push_back(10);
 
   // Do we want a bus on start? Or let the update handle this?
   // active_buses_.push_back(new Bus(std::to_string(bus_counters_[0]),
-  //   prototype_routes[0].Clone(), prototype_routes[1].Clone(), 60, 1));
+  // prototype_routes[0].Clone(), prototype_routes[1].Clone(), 60, 1));
   // bus_counters_[0]++;
 
   return true;
@@ -205,11 +208,11 @@ bool rLocalSimulator2::Update() {
     // bus report
     (*bus_iter)->Report(std::cout);
 
-    //REQUIRES USE OF IsTripComplete, which was not required
-    //Buses which are "done" will just keep having Update() called
+    // REQUIRES USE OF IsTripComplete, which was not required
+    // Buses which are "done" will just keep having Update() called
     //  Students MAY need to deal with this, not sure yet...
     // remove bus if trip is complete
-    //if ((*bus_iter)->IsTripComplete()) {
+    // if ((*bus_iter)->IsTripComplete()) {
     //  bus_iter = active_buses_.erase(bus_iter);
     //  bus_iter--;
     //}

@@ -15,8 +15,9 @@ void IObservable::ClearObservers() {
 }
 
 void IObservable::NotifyObservers(BusData * info) {
-  for(std::vector<IObserver*>::const_iterator iter = observer_.begin(); iter != observer_.end(); ++iter) {
-           if(*iter != 0){
+  for (std::vector<IObserver*>::const_iterator iter = observer_.begin();
+  iter != observer_.end(); ++iter) {
+           if (*iter != 0) {
              (*iter)->Notify(info);
            }
          }
