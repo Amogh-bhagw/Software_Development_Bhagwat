@@ -12,7 +12,7 @@
 #include <iostream>
 #include <list>
 #include <string>
-
+#include <ctime>
 #include "src/large_bus.h"
 #include "src/regular_bus.h"
 #include "src/small_bus.h"
@@ -37,6 +37,9 @@ class BusFactory{
    *
    * @return Bus object with name, two routes, capacity, and speed
    */
-  static Bus * GenerateBus(std::string name, Route * out, Route * in);
+  Bus * GenerateBus(std::string name, Route * out, Route * in);
+  Bus * Strat1(std::string name, Route * out, Route * in);
+  Bus * Strat2(std::string name, Route * out, Route * in);
+  Bus * Strat3(std::string name, Route * out, Route * in);
 };
 #endif  // SRC_BUS_FACTORY_H_
