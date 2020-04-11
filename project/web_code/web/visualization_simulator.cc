@@ -38,7 +38,7 @@ void VisualizationSimulator::Start(const std::vector<int>& busStartTimings,
     }
 }
 
-void VisualizationSimulator::Pause() {
+void VisualizationSimulator::TogglePause() {
     // if the sim is already pause
     // we change the variable to false,
     // so we can continue to run the sim.
@@ -47,6 +47,34 @@ void VisualizationSimulator::Pause() {
     } else {
        ispaused = true;
     }
+}
+
+void VisualizationSimulator::ClearListeners() {
+  // we go through the bus vector callin ClearObservers
+  // seems redundant to go through all the busses
+  // as the ClearObservers just clears every element in
+  // the observer_ vector but this is the only way
+  // I found that updated the vis sim the fastest
+  for (std::vector<Bus *>::const_iterator iter =
+   busses_.begin(); iter != busses_.end();
+     ++iter) {
+         (*iter)->ClearObservers();
+       }
+}
+
+void VisualizationSimulator::AddListener(std::string * id,
+  IObserver * observer) {
+  // we go through the bus vector until we finnd the correct
+  // id. When we find the correct id we call
+  // RegisterObserver with that bus and pass
+  // in the observer paramter with it
+  for (std::vector<Bus *>::const_iterator iter = busses_.begin();
+  iter != busses_.end();
+     ++iter) {
+       if ((*iter)->GetName() == *id) {
+         (*iter)->RegisterObserver(observer);
+       }
+     }
 }
 
 void VisualizationSimulator::Update() {

@@ -10,20 +10,26 @@
 #include <list>
 #include <string>
 
+#include "src/IObservable.h"
 #include "src/data_structs.h"
-
 #include "src/passenger.h"
 #include "src/passenger_loader.h"
 #include "src/passenger_unloader.h"
 #include "src/route.h"
 #include "src/stop.h"
 
+
 class PassengerUnloader;
 class PassengerLoader;
 class Route;
 class Stop;
 
-class Bus {
+/**
+ * @brief The main class for bus
+ * The bus inherits from IObsevable
+ *
+ */
+class Bus : public IObservable {
  public:
   Bus(std::string name, Route * out, Route * in, int capacity = 60,
       double speed = 1);
