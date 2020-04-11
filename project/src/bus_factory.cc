@@ -10,9 +10,9 @@
 #include <iostream>
 #include "src/bus_factory.h"
 
-
+// This is the morning strat which deploys only Small and Regular Busses
 Bus * BusFactory::Strat1(std::string name, Route * out, Route * in) {
-  static int count1 = 0;
+  static int count1 = 0;  // Keeps track of state
   if (count1 == 0) {
       count1++;
       std::cout << "SmallBus is being deployed" << std::endl;
@@ -23,9 +23,9 @@ Bus * BusFactory::Strat1(std::string name, Route * out, Route * in) {
     return new RegularBus(name, out, in);
   }
 }
-
+// This is this the afternoon strat which deploys Regular and Large
 Bus * BusFactory::Strat2(std::string name, Route * out, Route * in) {
-  static int count2 = 0;
+  static int count2 = 0;  // Keeps track of state
   if (count2 == 0) {
       count2++;
       std::cout << "RegularBus is being deployed" << std::endl;
@@ -36,9 +36,9 @@ Bus * BusFactory::Strat2(std::string name, Route * out, Route * in) {
     return new LargeBus(name, out, in);
   }
 }
-
+// This is this the evening strat which deploys all three busses
 Bus * BusFactory::Strat3(std::string name, Route * out, Route * in) {
-  static int count3 = 0;
+  static int count3 = 0;  // Keeps track of state
   if (count3 == 0) {
       count3++;
       std::cout << "SmallBus is being deployed" << std::endl;
@@ -57,9 +57,10 @@ Bus * BusFactory::Strat3(std::string name, Route * out, Route * in) {
 // The generate function takes in name and only two routes
 // because small, regular, and large have fixed capacity and
 // speed.
-// The generate function returns a Bua pointer, which will be
-// a random type of bus.
+// The generate function returns a Bus pointer, which will be
+// determined based on the time of day
 Bus * BusFactory::GenerateBus(std::string name, Route * out, Route * in) {
+  // Below is how we get our current time
   struct tm newtime;
   time_t ltime;
   ltime = time(&ltime);
@@ -68,6 +69,7 @@ Bus * BusFactory::GenerateBus(std::string name, Route * out, Route * in) {
   std::cout << "The current time is: " << hour <<
   ":" << newtime.tm_min << ":" << newtime.tm_sec << std::endl;
 
+  // A bunch of statments to determine which strategy to call
   if (hour >= 6 && hour < 8) {
     std::cout << "Strategy 1 is being implemented" << std::endl;
     return Strat1(name, out, in);

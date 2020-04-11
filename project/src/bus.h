@@ -24,8 +24,11 @@ class PassengerLoader;
 class Route;
 class Stop;
 
-
-
+/**
+ * @brief The main class for bus
+ * The bus inherits from IObsevable
+ *
+ */
 class Bus : public IObservable {
  public:
   Bus(std::string name, Route * out, Route * in, int capacity = 60,
