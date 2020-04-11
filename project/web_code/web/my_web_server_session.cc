@@ -8,6 +8,6 @@ void MyWebServerSession::receiveJSON(picojson::value& val) {
     //std::cout << val.get<picojson::object>()["command"].get<std::string>() << std::endl;
     std::map<std::string, MyWebServerCommand*>::iterator it = state.commands.find(cmd);
     if (it != state.commands.end()) {
-        it->second->execute(this, val, &state); // changed Might need to edit val
+        it->second->execute(this, &val, &state); // changed Might need to edit val
     }
 }

@@ -143,6 +143,9 @@ bool Bus::Move() {
 void Bus::Update() {  // using common Update format
   Move();
   UpdateBusData();
+  // We place notify here because everytime
+  // bus is updated we want to give the users
+  // the latest bus data.
   NotifyObservers(&bus_data_);
 }
 

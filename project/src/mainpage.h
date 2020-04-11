@@ -25,6 +25,52 @@
  *
  * \section design_sec Design
  *
+ *
+ * \subsection Observer_Pattern Observer Pattern
+ * For the second iteration we were tasked to
+ * implement an observer pattern. A observer pattern
+ * like the name suggests is a design to let
+ * users track a object/item. This helps the
+ * user keep track of any changes that happen
+ * to the item being observed. In the case of the
+ * bus sim we were tasked to create an observer pattern
+ * for the bus class. We wanted to let the user
+ * monitor a bus along it's route, while giving the
+ * user current info about the bus capacity,
+ * position, and number of passengers anytime it
+ * moved.
+ * ![Observerpattern](@ref observer_pattern.png)
+ *
+ * \subsection Implementation Observer Pattern Implementation
+ * The way we implmnted an observer pattern for bus was
+ * first by creating an abstract IObserver class. The only
+ * method in the class was a notify method, which other
+ * classes had to implment if they were inheriting.
+ * This class acted as template for what info the users
+ * wanted to see anytime a bus had moved.
+ * Second we had to make an IObservable class. This
+ * is where busses would be registered to be
+ * observed or to be unobserved. This class
+ * had three main methods. RegisterObserver,
+ * ClearObservers, and NotifyObservers,
+ * which the bus class inherits from. To
+ * get better understanding of this idea, let us
+ * go over how this works in the bus sim.
+ * When the user clicks on a bus to observe, the RegisterObserver method
+ * sends the BusData to be added to the
+ * observer vector and at the
+ * same time the ClearObservers clears the vector.
+ * Now everytime the bus details are 
+ * updated, the NotifyObservers method is invoked
+ * which calls the BusWebObserver class to
+ * print the lastest bus info.
+ * There are a few other classes that helped implementing
+ * this observer pattern for bus, but I won't get
+ * into it. I would recommend checking out the
+ * UML provided below to better understand how everything is connected.
+ *
+ * ![Observer_Pattern](@ref Observer_UML.jpg)
+ * ![Sequence diagram](@ref UML_sequence_diag.jpeg)
  * \subsection factory_design Factory Pattern
  *
  * In this project we implemented a Factory Pattern to help
@@ -105,6 +151,8 @@
  * because i need only three object types and I don't think going forward we
  * will have to create more types of buses. It was easy to code and
  * implementation was simple.
+ *
+ *
  *
  * \section how_to_run Getting Started
  *
