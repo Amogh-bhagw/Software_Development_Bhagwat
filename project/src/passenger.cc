@@ -50,4 +50,5 @@ void Passenger::Report(std::ostream& out) const {
   out << "Total Wait: " << GetTotalWait() << std::endl;
   out << "\tWait at Stop: " << wait_at_stop_ << std::endl;
   out << "\tTime on bus: " << time_on_bus_ << std::endl;
+
 }

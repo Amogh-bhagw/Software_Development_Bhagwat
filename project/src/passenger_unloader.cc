@@ -3,6 +3,8 @@
  *
  * @copyright 2019 3081 Staff, All rights reserved.
  */
+#include <sstream>
+#include <iostream>
 #include "src/passenger_unloader.h"
 
 int PassengerUnloader::UnloadPassengers(std::list<Passenger *>* passengers,
@@ -10,6 +12,8 @@ int PassengerUnloader::UnloadPassengers(std::list<Passenger *>* passengers,
   // TODO(wendt): may need to do end-of-life here
   // instead of in Passenger or Simulator
   int passengers_unloaded = 0;
+  std::ostringstream report;
+
   for (std::list<Passenger *>::iterator it = passengers->begin();  // Changed
       it != passengers->end();  // Changed
       it++) {
@@ -24,6 +28,5 @@ int PassengerUnloader::UnloadPassengers(std::list<Passenger *>* passengers,
       passengers_unloaded++;
     }
   }
-
   return passengers_unloaded;
 }

@@ -7,8 +7,10 @@
 #ifndef SRC_PASSENGER_UNLOADER_H_
 #define SRC_PASSENGER_UNLOADER_H_
 #include <list>
+#include <string>
 #include "src/passenger.h"
 #include "src/stop.h"
+
 class Stop;
 class Passenger;
 
@@ -17,5 +19,6 @@ class PassengerUnloader {
   // UnloadPassengers returns the number of passengers removed from the bus.
   int UnloadPassengers(std::list<Passenger*>* passengers,
                        Stop * current_stop);  // Changed this part
+
 };
 #endif  // SRC_PASSENGER_UNLOADER_H_
