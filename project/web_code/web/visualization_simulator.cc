@@ -8,6 +8,7 @@
 #include "src/bus.h"
 #include "src/route.h"
 #include "src/bus_factory.h"
+#include "src/IObservable.h"
 
 VisualizationSimulator::VisualizationSimulator(WebInterface* webI,
   ConfigManager* configM) {
@@ -49,21 +50,19 @@ void VisualizationSimulator::TogglePause() {
     }
 }
 
-void VisualizationSimulator::ClearListeners() {
+void VisualizationSimulator::ClearBusListeners() {
   // we go through the bus vector callin ClearObservers
-  // seems redundant to go through all the busses
+  // seems redundant to go through all the observers
   // as the ClearObservers just clears every element in
   // the observer_ vector but this is the only way
   // I found that updated the vis sim the fastest
-  for (std::vector<Bus *>::const_iterator iter =
-   busses_.begin(); iter != busses_.end();
-     ++iter) {
-         (*iter)->ClearObservers();
-       }
+  for (int i = 0; i < static_cast<int>(busses_.size()); i++) {
+    busses_[i]->ClearObservers();
+  }
 }
 
-void VisualizationSimulator::AddListener(std::string * id,
-  IObserver * observer) {
+void VisualizationSimulator::AddBusListener(std::string * id,
+  IObserver<BusData*> * observer) {
   // we go through the bus vector until we finnd the correct
   // id. When we find the correct id we call
   // RegisterObserver with that bus and pass
@@ -75,6 +74,36 @@ void VisualizationSimulator::AddListener(std::string * id,
          (*iter)->RegisterObserver(observer);
        }
      }
+}
+
+void VisualizationSimulator::AddStopListener(std::string * id,
+  IObserver<StopData*> * observer) {
+    std::list<Stop*> v;
+    for (int i ; i < static_cast<int>(prototypeRoutes_.size()); i++) {
+      v = prototypeRoutes_[i]->GetStops();
+      for (std::list<Stop*>::iterator it = v.begin(); it != v.end();
+       it++) {
+                std::cout << "IM here------------------------------------" << std::endl;
+              if(std::to_string((*it)->GetId()) == *id) {
+                (*it)->RegisterObserver(observer);
+                std::cout << "IM here2---------------------------------------" << std::endl;
+              }
+        }
+      }
+  }
+
+
+
+void VisualizationSimulator::ClearStopListeners() {
+  std::list<Stop*> v;
+  for (int i ; i < static_cast<int>(prototypeRoutes_.size()); i++) {
+    v = prototypeRoutes_[i]->GetStops();
+    for (std::list<Stop*>::iterator it = v.begin(); it != v.end(); it++) {
+       (*it)->ClearObservers();
+      }
+    }
+
+
 }
 
 void VisualizationSimulator::Update() {

@@ -18,6 +18,8 @@
 #include "src/data_structs.h"
 #include "src/IObserver.h"
 
+
+template<typename T>
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
@@ -26,6 +28,7 @@
  */
 class IObservable {
  public:
+   IObservable() : observer_() {};
   /**
    * @brief Adding observer to vector.
    *
@@ -34,7 +37,9 @@ class IObservable {
    *
    * @param[in] observer Object/item to be observed
    */
-  void RegisterObserver(IObserver * observer);
+   void RegisterObserver(IObserver<T> * observer) {
+     observer_.push_back(observer);  // adds to the vector
+   }
   /**
    * @brief Clearing the observer_ vector
    *
@@ -42,7 +47,12 @@ class IObservable {
    * that is currently being observed
    *
    */
-  void ClearObservers();
+   void ClearObservers() {
+     for (int i = 0; i < static_cast<int>(observer_.size()); i++) {
+       delete observer_[i];
+     }
+     observer_.clear();  // clears the whole vector
+   }
   /**
    * @brief Notifying any changes.
    *
@@ -52,13 +62,18 @@ class IObservable {
    *
    * @param[in] info New information/data about the object.
    */
-  void NotifyObservers(BusData * info);
-
+   void NotifyObservers(T info) {
+     // we loop through the whole vector and call notify on
+     // each object
+     for (int i = 0; i < static_cast<int>(observer_.size()); i++) {
+         observer_[i]->Notify(info);
+     }
+   }
  private:
   /*
    * @brief Holds what is being observed.
    **/
-  std::vector<IObserver*> observer_;
+  std::vector<IObserver<T>*> observer_;
 };
 
 #endif  // SRC_IOBSERVABLE_H_

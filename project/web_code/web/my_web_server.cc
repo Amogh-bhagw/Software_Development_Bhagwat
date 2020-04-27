@@ -24,13 +24,14 @@ void MyWebServer::UpdateBus(const BusData& bData, bool deleted) {
         busses[index].position = bData.position;
         busses[index].num_passengers = bData.num_passengers;
         busses[index].capacity = bData.capacity;
+        busses[index].color = bData.color;  // gets the color struct
     } else {
         busses.push_back(bData);
     }
 }
 
 void MyWebServer::UpdateRoute(const RouteData& rData, bool deleted) {
-    
+
     auto it = std::find_if(routes.begin(), routes.end(), [&](const RouteData& r) { return r.id == rData.id; });
 
     if (it != routes.end()) {
@@ -39,15 +40,13 @@ void MyWebServer::UpdateRoute(const RouteData& rData, bool deleted) {
             routes.erase(it);
             return;
         }
-        
+
         int index = std::distance(routes.begin(), it);
 
         routes[index].id = rData.id;
         routes[index].stops = rData.stops;
-    
+
     } else {
         routes.push_back(rData);
     }
 }
-
-
