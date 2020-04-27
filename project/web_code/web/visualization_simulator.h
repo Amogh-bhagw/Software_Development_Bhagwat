@@ -44,7 +44,7 @@ class VisualizationSimulator {
    * vector and call ClearObservers
    * because we want to add a new observer
    */
-  void ClearListeners();
+  void ClearBusListeners();
   /**
    * @brief Calls RegisterObserver on the bus id passed in.
    *
@@ -53,8 +53,23 @@ class VisualizationSimulator {
    * we call the RegisterObserver method with the observer
    * input passed in.
    */
-  void AddListener(std::string * id, IObserver * observer);
-
+  void AddBusListener(std::string * id, IObserver<BusData*> * observer);
+  /**
+   * @brief Calls ClearObservers on all Stops.
+   * We iterate through the prototypeRoutes_
+   * vector and call ClearObservers
+   * because we want to add a new observer
+   */
+  void ClearStopListeners();
+  /**
+   * @brief Calls RegisterObserver on the Stop id passed in.
+   *
+   * We iterate through the prototypeRoutes_ vector
+   * until we find the matching id, then
+   * we call the RegisterObserver method with the observer
+   * input passed in.
+   */
+  void AddStopListener(std::string * id, IObserver<StopData*> * observer);
  private:
   WebInterface* webInterface_;
   ConfigManager* configManager_;

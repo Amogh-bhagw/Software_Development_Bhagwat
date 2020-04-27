@@ -7,7 +7,6 @@
 #define WEB_MY_WEB_SERVER_COMMAND_H_
 
 #include <vector>
-
 #include "src/config_manager.h"
 #include "web_code/web/visualization_simulator.h"
 
@@ -24,7 +23,7 @@ class MyWebServerCommand {
  public:
   virtual ~MyWebServerCommand() {}
   virtual void execute(MyWebServerSession* session,
-  picojson::value* command, MyWebServerSessionState* state) = 0;
+  picojson::value& command, MyWebServerSessionState* state) = 0;
 };
 
 
@@ -33,7 +32,7 @@ class MyWebServerCommand {
 class GetRoutesCommand : public MyWebServerCommand {
  public:
   explicit GetRoutesCommand(MyWebServer* ws);
-  void execute(MyWebServerSession* session, picojson::value* command,
+  void execute(MyWebServerSession* session, picojson::value& command,
   MyWebServerSessionState* state) override;
  private:
   MyWebServer* myWS;
@@ -42,7 +41,7 @@ class GetRoutesCommand : public MyWebServerCommand {
 class GetBussesCommand : public MyWebServerCommand {
  public:
   explicit GetBussesCommand(MyWebServer* ws);
-  void execute(MyWebServerSession* session, picojson::value* command,
+  void execute(MyWebServerSession* session, picojson::value& command,
   MyWebServerSessionState* state) override;
  private:
   MyWebServer* myWS;
@@ -51,7 +50,7 @@ class GetBussesCommand : public MyWebServerCommand {
 class StartCommand : public MyWebServerCommand {
  public:
   explicit StartCommand(VisualizationSimulator* sim);
-  void execute(MyWebServerSession* session, picojson::value* command,
+  void execute(MyWebServerSession* session, picojson::value& command,
   MyWebServerSessionState* state) override;
  private:
   VisualizationSimulator* mySim;
@@ -62,7 +61,7 @@ class StartCommand : public MyWebServerCommand {
 class UpdateCommand : public MyWebServerCommand {
  public:
   explicit UpdateCommand(VisualizationSimulator* sim);
-  void execute(MyWebServerSession* session, picojson::value* command,
+  void execute(MyWebServerSession* session, picojson::value& command,
   MyWebServerSessionState* state) override;
  private:
   VisualizationSimulator* mySim;
@@ -86,24 +85,24 @@ class PauseCommand : public MyWebServerCommand {
 	 * @param command information you passed in the JSON.
 	 * @param state Not that important as of now.
 	 */
-  void execute(MyWebServerSession* session, picojson::value* command,
+  void execute(MyWebServerSession* session, picojson::value& command,
    MyWebServerSessionState* state) override;
  private:
   VisualizationSimulator* mySim;
 };
 
 /**
- * @brief The AddListenerCommand (Observer) command
+ * @brief The AddBusListenerCommand (Observer) command
  *
  */
-class AddListenerCommand: public MyWebServerCommand {
+class AddBusListenerCommand: public MyWebServerCommand {
  public:
   /**
-	 * @brief Sets up the AddListenerCommand functionality.
+	 * @brief Sets up the AddBusListenerCommand functionality.
 	 *
 	 * @param sim The paramter is the running sim.
 	 */
-  explicit AddListenerCommand(VisualizationSimulator* sim);
+  explicit AddBusListenerCommand(VisualizationSimulator* sim);
 	/**
 	 * @brief function used when a bus is pressed.
 	 *
@@ -111,7 +110,32 @@ class AddListenerCommand: public MyWebServerCommand {
 	 * @param command information you passed in the JSON.
 	 * @param state Not that important as of now.
 	 */
-  void execute(MyWebServerSession* session, picojson::value* command,
+  void execute(MyWebServerSession* session, picojson::value& command,
+  MyWebServerSessionState* state) override;
+ private:
+  VisualizationSimulator* mySim;
+};
+
+/**
+ * @brief The AddStopListenerCommand (Observer) command
+ *
+ */
+class AddStopListenerCommand: public MyWebServerCommand {
+ public:
+  /**
+	 * @brief Sets up the AddListenerCommand functionality.
+	 *
+	 * @param sim The paramter is the running sim.
+	 */
+  explicit AddStopListenerCommand(VisualizationSimulator* sim);
+	/**
+	 * @brief function used when a bus is pressed.
+	 *
+	 * @param session information about the web session.
+	 * @param command information you passed in the JSON.
+	 * @param state Not that important as of now.
+	 */
+  void execute(MyWebServerSession* session, picojson::value& command,
   MyWebServerSessionState* state) override;
  private:
   VisualizationSimulator* mySim;
@@ -120,7 +144,7 @@ class AddListenerCommand: public MyWebServerCommand {
 class InitRoutesCommand : public MyWebServerCommand {
  public:
   explicit InitRoutesCommand(ConfigManager* cm);
-  void execute(MyWebServerSession* session, picojson::value* command,
+  void execute(MyWebServerSession* session, picojson::value& command,
   MyWebServerSessionState* state) override;
  private:
   ConfigManager* cm;

@@ -17,6 +17,7 @@
 
 #include "src/data_structs.h"
 
+template<typename T>
 /*******************************************************************************
  * Class Definitions
  ******************************************************************************/
@@ -34,6 +35,6 @@ class IObserver {
     *
     * @param[in] info New information/data about the object.
     */
-  virtual void Notify(BusData * info) = 0;
+  virtual void Notify(T info) = 0;
 };
 #endif  // SRC_IOBSERVER_H_
