@@ -10,11 +10,15 @@
 #include <list>
 #include <iostream>
 #include <string>
+#include <sstream>
 
 #include "web_code/web/web_interface.h"
 #include "src/config_manager.h"
 #include "src/IObservable.h"
 #include "src/IObserver.h"
+#include "src/FileWriterManager.h"
+#include "src/FileWriter.h"
+#include "src/Util.h"
 
 class Route;
 class Bus;
@@ -85,6 +89,7 @@ class VisualizationSimulator {
   bool ispaused = false;
 
   int busId = 1000;
+  std::string bus_stats_file_name = "BusData.csv";
 };
 
 #endif  // WEB_VISUALIZATION_SIMULATOR_H_
