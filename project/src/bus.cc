@@ -32,6 +32,7 @@ bool Bus::LoadPassenger(Passenger * new_passenger) {
   bool added_passenger = false;
   if (loader_->LoadPassenger(new_passenger, passenger_max_capacity_,
       &passengers_) > 0) {
+        total_passenger+= 1;  // counts total passengers
         added_passenger = true;
         // revenue_ += 0; //No revenue tracking at this time.
   }
@@ -40,6 +41,7 @@ bool Bus::LoadPassenger(Passenger * new_passenger) {
 
 
 bool Bus::Move() {
+
   int total_peeps = GetNumPassengers();
   Color new_color = GetColor();
   int r = new_color.red;

@@ -58,6 +58,7 @@ class Bus : public IObservable<BusData*> {
   Stop * GetNextStop() const { return next_stop_; }
   size_t GetNumPassengers() const { return passengers_.size(); }
   int GetCapacity() const { return passenger_max_capacity_; }
+  int GetTotalNumberPass() { return total_passenger;}
 
   /**
    * @brief Set the color for bus
@@ -100,8 +101,8 @@ class Bus : public IObservable<BusData*> {
   Stop * next_stop_;
   // bool trip_complete_;  // [DERIVED data] when BOTH routes are at end, trip
   // is complete
-
   // Vis data for bus
   BusData bus_data_;
+  int total_passenger = 0;
 };
 #endif  // SRC_BUS_H_

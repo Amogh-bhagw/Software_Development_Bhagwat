@@ -83,10 +83,9 @@ void VisualizationSimulator::AddStopListener(std::string * id,
       v = prototypeRoutes_[i]->GetStops();
       for (std::list<Stop*>::iterator it = v.begin(); it != v.end();
        it++) {
-                std::cout << "IM here------------------------------------" << std::endl;
               if(std::to_string((*it)->GetId()) == *id) {
                 (*it)->RegisterObserver(observer);
-                std::cout << "IM here2---------------------------------------" << std::endl;
+
               }
         }
       }
@@ -105,8 +104,9 @@ void VisualizationSimulator::ClearStopListeners() {
 
 
 }
-
+Util x;
 void VisualizationSimulator::Update() {
+  std::ostringstream report2;
 // This for loop incases the whole update
 // method. This is how the pause
 // function is implemented.
@@ -147,6 +147,19 @@ if(ispaused != true) {
 
         if (busses_[i]->IsTripComplete()) {
             webInterface_->UpdateBus(busses_[i]->GetBusData(), true);
+            // We call report function to get the bus data
+            busses_[i]->Report(report2);
+            report2 << "Total Num of Passengers "
+            // Call the counter for total passengers
+            << busses_[i]->GetTotalNumberPass() << std::endl;
+            report2 << "," << std::endl;
+
+            // Set up for processing and writing to the bus file
+            std::string infos2 = report2.str();
+            std::vector<std::string> v2 = x.processOutput(infos2);
+            FileWriter* w2 = FileWriterManager::Getinstance();
+            w2->Write(bus_stats_file_name, v2);
+
             busses_.erase(busses_.begin() + i);
             continue;
         }
