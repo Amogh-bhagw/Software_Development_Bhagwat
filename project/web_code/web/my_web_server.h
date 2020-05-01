@@ -1,15 +1,18 @@
-
-#ifndef MY_WEB_SERVER_H
-#define MY_WEB_SERVER_H
+/**
+ * @file my_web_server.h
+ *
+ * @copyright 2020 3081 staff, All rights reserved.
+ */
+#ifndef WEB_MY_WEB_SERVER_H_
+#define WEB_MY_WEB_SERVER_H_
 
 #include <vector>
 
-#include "web_interface.h"
+#include "web_code/web/web_interface.h"
 
 
 class MyWebServer : public WebInterface {
-    
-    public:
+ public:
         MyWebServer();
         ~MyWebServer() {}
 
@@ -18,7 +21,5 @@ class MyWebServer : public WebInterface {
 
         std::vector<RouteData> routes;
         std::vector<BusData> busses;
-
 };
-
-#endif //MY_WEB_SERVER_H
+#endif  // WEB_MY_WEB_SERVER_H_

@@ -41,7 +41,6 @@ bool Bus::LoadPassenger(Passenger * new_passenger) {
 
 
 bool Bus::Move() {
-
   int total_peeps = GetNumPassengers();
   Color new_color = GetColor();
   int r = new_color.red;
@@ -73,10 +72,10 @@ bool Bus::Move() {
             current_route = incoming_route_;
             if (!incoming_route_->IsAtEnd()) {
             // This Changes the color intesity, with the number of passengers
-                if(total_peeps >= 5) {
-                  SetColor(r,g,b,(300));
-                  if(total_peeps >= 10) {
-                  SetColor(r,g,b,(400));
+                if (total_peeps >= 5) {
+                  SetColor(r, g, b, (300));
+                  if (total_peeps >= 10) {
+                  SetColor(r, g, b, (400));
                  }
                }
 
@@ -110,10 +109,10 @@ bool Bus::Move() {
         }
 
         // This Changes the color intesity, with the number of passengers
-            if(total_peeps >= 5) {
-              SetColor(r,g,b,(300));
-              if(total_peeps >= 10) {
-              SetColor(r,g,b,(400));
+            if (total_peeps >= 5) {
+              SetColor(r, g, b, (300));
+              if (total_peeps >= 10) {
+              SetColor(r, g, b, (400));
              }
            }
 

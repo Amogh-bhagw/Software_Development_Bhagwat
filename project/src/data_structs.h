@@ -1,6 +1,10 @@
-
-#ifndef DATA_STRUCTS_H_
-#define DATA_STRUCTS_H_
+/**
+ * @file data_structs.h
+ *
+ * @copyright 2020 Amogh Bhagwat and 3081 staff, All rights reserved.
+ */
+#ifndef SRC_DATA_STRUCTS_H_
+#define SRC_DATA_STRUCTS_H_
 
 #include <string>
 #include <vector>
@@ -14,7 +18,7 @@ struct Position {
 };
 
 struct Color {
-    Color(int r=128, int g= 0, int b=0, int a=200):
+    explicit Color(int r = 128, int g = 0, int b = 0, int a = 200):
         red(r), green(g), blue(b), alpha(a) { }
     int red;
     int green;
@@ -24,8 +28,10 @@ struct Color {
 
 struct BusData {
     BusData(std::string id, Color color, Position pos, int n_pass, int cap):
-        id(id), position(pos), num_passengers(n_pass), capacity(cap), color(color) { }
-    BusData() : id(""), position(Position()), num_passengers(0), capacity(0), color() {}
+        id(id), position(pos), num_passengers(n_pass), capacity(cap),
+      color(color) { }
+    BusData() : id(""), position(Position()), num_passengers(0),
+    capacity(0), color() {}
     std::string id;
     Position position;
     int num_passengers;
@@ -43,11 +49,11 @@ struct StopData {
 };
 
 struct RouteData {
-    RouteData(std::string id) :
+  explicit RouteData(std::string id) :
         id(id), stops(std::vector<StopData>(0)) { }
     RouteData() : id(""), stops(std::vector<StopData>(0)) {}
     std::string id;
     std::vector<StopData> stops;
 };
 
-#endif // DATA_STRUCTS_H_
+#endif  // SRC_DATA_STRUCTS_H_

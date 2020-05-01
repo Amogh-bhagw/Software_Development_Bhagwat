@@ -35,20 +35,18 @@ class FileWriter {
     */
   FileWriter() {}
   void Write(std::string file, std::vector<std::string> data) {
-   std::ofstream myfile;
-   myfile.open(file, std::ios_base::app);  // appends to the file
+  std::ofstream myfile;
+  myfile.open(file, std::ios_base::app);  // appends to the file
 
-   for(std::vector<std::string>::const_iterator it = data.begin();
+  for (std::vector<std::string>::const_iterator it = data.begin();
         it != data.end(); it++) {
-          if((*it) != ",") {  // helps with separating of data
+          if ((*it) != ",") {  // helps with separating of data
           myfile << (*it) << " ";
-        }
-        else {
+        } else {
           myfile << std::endl;
         }
       }
     myfile.close();
   }
-
 };
 #endif  // SRC_FILEWRITER_H_

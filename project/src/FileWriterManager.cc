@@ -8,8 +8,8 @@
 
 // We start out with the file_writer being NULL, so it gets instanated
 static FileWriter* file_writer = NULL;
-FileWriter* FileWriterManager::Getinstance(){
-  if(!file_writer) {
+FileWriter* FileWriterManager::Getinstance() {
+  if (!file_writer) {
      file_writer = new FileWriter;
   }
   return file_writer;

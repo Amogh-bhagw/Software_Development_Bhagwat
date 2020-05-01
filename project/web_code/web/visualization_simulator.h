@@ -74,6 +74,8 @@ class VisualizationSimulator {
    * input passed in.
    */
   void AddStopListener(std::string * id, IObserver<StopData*> * observer);
+
+
  private:
   WebInterface* webInterface_;
   ConfigManager* configManager_;

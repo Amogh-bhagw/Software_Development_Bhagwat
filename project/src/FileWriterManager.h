@@ -25,11 +25,11 @@
  */
 class FileWriterManager {
  public:
-   /**
-    * @brief returns a instance to FileWriter.
-    *
-    * @return a FileWriter pointer
-    */
-   static FileWriter* Getinstance();
+ /**
+  * @brief returns a instance to FileWriter.
+  *
+  * @return a FileWriter pointer
+  */
+  static FileWriter* Getinstance();
 };
 #endif  // SRC_FILEWRITERMANAGER_H_

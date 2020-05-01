@@ -83,9 +83,8 @@ void VisualizationSimulator::AddStopListener(std::string * id,
       v = prototypeRoutes_[i]->GetStops();
       for (std::list<Stop*>::iterator it = v.begin(); it != v.end();
        it++) {
-              if(std::to_string((*it)->GetId()) == *id) {
+              if (std::to_string((*it)->GetId()) == *id) {
                 (*it)->RegisterObserver(observer);
-
               }
         }
       }
@@ -101,8 +100,6 @@ void VisualizationSimulator::ClearStopListeners() {
        (*it)->ClearObservers();
       }
     }
-
-
 }
 Util x;
 void VisualizationSimulator::Update() {
