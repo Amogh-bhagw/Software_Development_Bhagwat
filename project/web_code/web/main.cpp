@@ -39,9 +39,10 @@ int main(int argc, char**argv) {
     state.commands["initRoutes"] = new InitRoutesCommand(cm);
   // Will trigger the pause execute() fucntion when pressed.
     state.commands["pause"] = new PauseCommand(mySim);
-  // Will trigger the AddListenerCommand execute() function when pressed.
-    state.commands["listen"] = new AddListenerCommand(mySim);
-
+  // Will trigger the AddBusListenerCommand execute() function when pressed.
+    state.commands["listenBus"] = new AddBusListenerCommand(mySim);
+  // Will trigger the AddStopListenerCommand execute() function when pressed.
+    state.commands["listenStop"] = new AddStopListenerCommand(mySim);
   WebServerWithState<MyWebServerSession, MyWebServerSessionState>
     server(state, port);
     while (true) {

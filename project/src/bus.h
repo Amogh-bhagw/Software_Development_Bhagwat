@@ -19,6 +19,7 @@
 #include "src/stop.h"
 
 
+
 class PassengerUnloader;
 class PassengerLoader;
 class Route;
@@ -29,7 +30,7 @@ class Stop;
  * The bus inherits from IObsevable
  *
  */
-class Bus : public IObservable {
+class Bus : public IObservable<BusData*> {
  public:
   Bus(std::string name, Route * out, Route * in, int capacity = 60,
       double speed = 1);
@@ -57,6 +58,28 @@ class Bus : public IObservable {
   Stop * GetNextStop() const { return next_stop_; }
   size_t GetNumPassengers() const { return passengers_.size(); }
   int GetCapacity() const { return passenger_max_capacity_; }
+  int GetTotalNumberPass() { return total_passenger;}
+
+  /**
+   * @brief Set the color for bus
+   * The function lets you
+   * set the color of the bus
+   *
+   * @param r red color
+   * @param b blue color
+   * @param g green color
+   * @param a alpha color
+   *
+   * @return True if loaded or False if not.
+   */
+  void SetColor(int r, int g, int b, int a);
+  /*
+   * @brief Get the color struct for the bus
+   *
+   * The function returns the current busses color
+   * struct
+   */
+  Color GetColor();
 
  protected:  // Might need to change back to private depanding on Piazza post
   int UnloadPassengers();  // returning revenue delta
@@ -78,8 +101,8 @@ class Bus : public IObservable {
   Stop * next_stop_;
   // bool trip_complete_;  // [DERIVED data] when BOTH routes are at end, trip
   // is complete
-
   // Vis data for bus
   BusData bus_data_;
+  int total_passenger = 0;
 };
 #endif  // SRC_BUS_H_

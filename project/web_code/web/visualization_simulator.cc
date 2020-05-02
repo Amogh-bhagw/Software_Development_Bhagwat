@@ -8,6 +8,7 @@
 #include "src/bus.h"
 #include "src/route.h"
 #include "src/bus_factory.h"
+#include "src/IObservable.h"
 
 VisualizationSimulator::VisualizationSimulator(WebInterface* webI,
   ConfigManager* configM) {
@@ -49,21 +50,19 @@ void VisualizationSimulator::TogglePause() {
     }
 }
 
-void VisualizationSimulator::ClearListeners() {
+void VisualizationSimulator::ClearBusListeners() {
   // we go through the bus vector callin ClearObservers
-  // seems redundant to go through all the busses
+  // seems redundant to go through all the observers
   // as the ClearObservers just clears every element in
   // the observer_ vector but this is the only way
   // I found that updated the vis sim the fastest
-  for (std::vector<Bus *>::const_iterator iter =
-   busses_.begin(); iter != busses_.end();
-     ++iter) {
-         (*iter)->ClearObservers();
-       }
+  for (int i = 0; i < static_cast<int>(busses_.size()); i++) {
+    busses_[i]->ClearObservers();
+  }
 }
 
-void VisualizationSimulator::AddListener(std::string * id,
-  IObserver * observer) {
+void VisualizationSimulator::AddBusListener(std::string * id,
+  IObserver<BusData*> * observer) {
   // we go through the bus vector until we finnd the correct
   // id. When we find the correct id we call
   // RegisterObserver with that bus and pass
@@ -77,7 +76,34 @@ void VisualizationSimulator::AddListener(std::string * id,
      }
 }
 
+void VisualizationSimulator::AddStopListener(std::string * id,
+  IObserver<StopData*> * observer) {
+    std::list<Stop*> v;
+    for (int i ; i < static_cast<int>(prototypeRoutes_.size()); i++) {
+      v = prototypeRoutes_[i]->GetStops();
+      for (std::list<Stop*>::iterator it = v.begin(); it != v.end();
+       it++) {
+              if (std::to_string((*it)->GetId()) == *id) {
+                (*it)->RegisterObserver(observer);
+              }
+        }
+      }
+  }
+
+
+
+void VisualizationSimulator::ClearStopListeners() {
+  std::list<Stop*> v;
+  for (int i ; i < static_cast<int>(prototypeRoutes_.size()); i++) {
+    v = prototypeRoutes_[i]->GetStops();
+    for (std::list<Stop*>::iterator it = v.begin(); it != v.end(); it++) {
+       (*it)->ClearObservers();
+      }
+    }
+}
+Util x;
 void VisualizationSimulator::Update() {
+  std::ostringstream report2;
 // This for loop incases the whole update
 // method. This is how the pause
 // function is implemented.
@@ -118,6 +144,19 @@ if(ispaused != true) {
 
         if (busses_[i]->IsTripComplete()) {
             webInterface_->UpdateBus(busses_[i]->GetBusData(), true);
+            // We call report function to get the bus data
+            busses_[i]->Report(report2);
+            report2 << "Total Num of Passengers "
+            // Call the counter for total passengers
+            << busses_[i]->GetTotalNumberPass() << std::endl;
+            report2 << "," << std::endl;
+
+            // Set up for processing and writing to the bus file
+            std::string infos2 = report2.str();
+            std::vector<std::string> v2 = x.processOutput(infos2);
+            FileWriter* w2 = FileWriterManager::Getinstance();
+            w2->Write(bus_stats_file_name, v2);
+
             busses_.erase(busses_.begin() + i);
             continue;
         }

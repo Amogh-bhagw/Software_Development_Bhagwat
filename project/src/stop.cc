@@ -5,6 +5,7 @@
  */
 #include <iostream>
 #include <vector>
+#include <list>
 #include "src/stop.h"
 
 // Defaults to Westbound Coffman Union stop
@@ -50,10 +51,21 @@ void Stop::Update() {
                                     it != passengers_.end(); it++) {
     (*it)->Update();
   }
+  UpdateStopData();
+  NotifyObservers(&stop_data_);
 }
 
 int Stop::GetId() const {
   return id_;
+}
+
+void Stop::UpdateStopData() {
+  stop_data_.id = std::to_string(GetId());
+  Position p;
+  p.x = longitude_;
+  p.y = latitude_;
+  stop_data_.position = p;
+  stop_data_.num_people = GetNumPassengersPresent();
 }
 
 

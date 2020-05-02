@@ -1,4 +1,4 @@
-
+// observer sketch
 const key = 'pk.eyJ1Ijoib3JhbmdlbWFtYmEiLCJhIjoiY2sxeTRlM2hxMGpqeTNtczV0cGFzYjk2NCJ9.n000lu-4M59iD3JhniH81w';
 
 var mapImg; // UMN Image generated from myMap
@@ -29,8 +29,6 @@ var numTimeSteps;
 
 var startButton;
 var started;
-var pauseButton;
-var paused = false;
 
 var simInfoYRectPos = 1; // Magic numbers for GUI elements
 var simInfoYPos = 15;
@@ -49,18 +47,11 @@ function Position(x, y) {
 	this.x = x;
 	this.y = y;
 }
-function Color(r, g, b, a) {
-    this.red = r;
-    this.green = g;
-    this.blue = b;
-    this.alpha = a;
-}
-function Bus(id, position, numPasengers, capacity, color) {
+function Bus(id, position, numPasengers, capacity) {
 	this.id = id;
 	this.position = position;
     this.numPassengers = numPassengers;
     this.capacity = capacity;
-    this.color = color;
 }
 function Stop(id, position, numPeople) {
 	this.id = id;
@@ -97,10 +88,7 @@ function setupSocket() {
                     y = data.busses[i].position.y;
                     position = new Position(x, y);
 
-                    var color = data.busses[i].color;
-                    color = new Color(color.red, color.green, color.blue, color.alpha);
-
-                    busses.push(new Bus(id, position, numPassengers, capacity, color));
+                    busses.push(new Bus(id, position, numPassengers, capacity));
                 }
             }
             if (data.command == "updateRoutes") {
@@ -195,7 +183,7 @@ function setup() {
 
     startButton = createButton('Start');
     startButton.position(10, startYPos);
-    startButton.style('width', '100px');
+    startButton.style('width', '200px');
     startButton.style('height', '20px');
     startButton.mousePressed(start);
 
@@ -204,12 +192,6 @@ function setup() {
     stopDropDown.style('width', '200px');
     stopDropDown.style('height', '20px');
     stopDropDown.changed(dropDownSelect)
-
-    pauseButton = createButton('Pause');
-    pauseButton.position(110, startYPos);
-    pauseButton.style('width', '100px');
-    pauseButton.style('height', '20px');
-    pauseButton.mousePressed(pause);
 
     // Image/map information
     const options = {
@@ -309,13 +291,12 @@ function render() {
         x = busses[i].position.x;
         y = busses[i].position.y;
         var pos = myMap.latLngToPixel(x, y);
-        var color = busses[i].color;
 
         pos.x = pos.x + imageX;
         pos.y = pos.y + imageY;
 
         push();
-        fill(color.red, color.green, color.blue, color.alpha);
+        fill(255, 0, 0, 255);
         rectMode(CENTER);
         rect(pos.x, pos.y, 45, 30, 20);
 
@@ -364,20 +345,7 @@ function start() {
 
 function dropDownSelect() {
     let item = stopDropDown.value();
-    socket.send(JSON.stringify({command: "listenStop", id: item}))  // for stop observer ?
-}
-function pause() {
-    console.log("Pause button clicked");
-
-    if (started){
-        socket.send(JSON.stringify({command: "pause"}));
-        paused = !paused;
-        if (paused) {
-            pauseButton.elt.childNodes[0].nodeValue = 'Unpause';
-        } else {
-            pauseButton.elt.childNodes[0].nodeValue = 'Pause';
-        }
-    }
+    socket.send(JSON.stringify({command: "listenStop", id: item}))
 }
 
 

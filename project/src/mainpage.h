@@ -26,6 +26,52 @@
  * \section design_sec Design
  *
  *
+ * \subsection Decorator_pattern Decorator Pattern
+ * For the third iteration we were tasked to implment a decorator pattern.
+ * The pattern is going to aid in changing bus colors depending on their routes
+ * and also their color intensity depending on the number of passengers they had
+ * on. A decorator pattern allows adding new behaviors to objects dynamically
+ * by placing them inside special wrapper objects. Lets say you have created a
+ * pizza class with the only method in it is getcost(). Now we want to add
+ * toppings to the pizza. This is where the decorator pattern plays a role.
+ * We can create different objects for each of the toppings and wrap the Pizza
+ * object with the topping object. So we can make a pepperoni object and wrap it
+ * with your pizza object and now you have made a pepperoni pizza object. Next
+ * we will take a look at two ways of implementing the decorator pattern for our
+ * bus.
+ *
+ * \subsection first_implementation Version 1 (I would have implemented this)
+ * You can think of verison 1 as a concerete implementation. We first start off
+ * with a interface class for bus, which has all the mthods for bus and
+ * decorator. Next we have the bus class inherit from this interface class. We
+ * also make a second class called BusDecorator, which implements the color
+ * change and intensity of the busses. With this now any time we wanted to
+ * create a colored bus we would call the BusDecorator class.
+ *
+ * Pros: for this is that it requires less code to set up. We only had to create
+ * two additonal classes to make it work. Another thing is that this way goes
+ * with interface segregation.
+ *
+ * Cons: This way is not open to extension and closed to modification. This also
+ * is not a single responsibilty.
+ * ![version1pattern](@ref Version_1_DP.png)
+ *
+ * \subsection second_implementation Version 2
+ * The second way to implement this is by seperating the methods in BusDecorator
+ * into individual classes. With the image below we can see that instead of
+ * having BusIntensity and BusColor inside BusDecorator we seperate it out and
+ * create their own classes.
+ *
+ * Pros: This is a better way to implement the decorator pattern if we were
+ * going to add additonal decorator elements. This way is also open for
+ * extension and closed for modification, as we can just add another decorator
+ * without altering anything.
+ *
+ * Cons: Requires more code upfront and in smaller application like this we
+ * don't really need to care about more decorator specifications coming in.
+ *
+ * ![version2pattern](@ref Version_2_DP.png)
+ *
  * \subsection Observer_Pattern Observer Pattern
  * For the second iteration we were tasked to
  * implement an observer pattern. A observer pattern
@@ -60,7 +106,7 @@
  * sends the BusData to be added to the
  * observer vector and at the
  * same time the ClearObservers clears the vector.
- * Now everytime the bus details are 
+ * Now everytime the bus details are
  * updated, the NotifyObservers method is invoked
  * which calls the BusWebObserver class to
  * print the lastest bus info.

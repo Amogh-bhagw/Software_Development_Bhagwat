@@ -32,6 +32,7 @@ bool Bus::LoadPassenger(Passenger * new_passenger) {
   bool added_passenger = false;
   if (loader_->LoadPassenger(new_passenger, passenger_max_capacity_,
       &passengers_) > 0) {
+        total_passenger+= 1;  // counts total passengers
         added_passenger = true;
         // revenue_ += 0; //No revenue tracking at this time.
   }
@@ -40,6 +41,11 @@ bool Bus::LoadPassenger(Passenger * new_passenger) {
 
 
 bool Bus::Move() {
+  int total_peeps = GetNumPassengers();
+  Color new_color = GetColor();
+  int r = new_color.red;
+  int g = new_color.green;
+  int b = new_color.blue;
   // update all passengers FIRST
   // new passengers will get "updated" when getting on the bus
   for (std::list<Passenger *>::iterator it = passengers_.begin();
@@ -62,8 +68,17 @@ bool Bus::Move() {
         // Determine which route we are on
         Route * current_route = outgoing_route_;
         if (outgoing_route_->IsAtEnd()) {
+            SetColor(255, 223, 0, 200);
             current_route = incoming_route_;
             if (!incoming_route_->IsAtEnd()) {
+            // This Changes the color intesity, with the number of passengers
+                if (total_peeps >= 5) {
+                  SetColor(r, g, b, (300));
+                  if (total_peeps >= 10) {
+                  SetColor(r, g, b, (400));
+                 }
+               }
+
                 // Only get here if we are on our incoming route
                 passengers_handled += UnloadPassengers();  // unload
                 passengers_handled += next_stop_->LoadPassengers(this);  // load
@@ -93,6 +108,13 @@ bool Bus::Move() {
             }
         }
 
+        // This Changes the color intesity, with the number of passengers
+            if (total_peeps >= 5) {
+              SetColor(r, g, b, (300));
+              if (total_peeps >= 10) {
+              SetColor(r, g, b, (400));
+             }
+           }
 
         // Only get here if we are on outgoing route
 
@@ -133,13 +155,24 @@ bool Bus::Move() {
 
   return did_move;
 }
+// Allows users to change the color of the bus
+void Bus::SetColor(int r, int g, int b, int a) {
+  bus_data_.color.red = r;
+  bus_data_.color.green = g;
+  bus_data_.color.blue = b;
+  bus_data_.color.alpha = a;
+}
 
+// Allows users to get the color struct for bus
+Color Bus::GetColor() {
+  Color temp = bus_data_.color;
+  return temp;
+}
 
 // bool Refuel() {
 // //This may become more complex in the future
 // fuel_ = max_fuel_;
 // }
-
 void Bus::Update() {  // using common Update format
   Move();
   UpdateBusData();

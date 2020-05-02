@@ -9,12 +9,14 @@
 #include <list>
 #include <iostream>
 
+#include "src/data_structs.h"
 #include "src/bus.h"
 #include "src/passenger.h"
+#include "src/IObservable.h"
 
 class Bus;
 
-class Stop {
+class Stop : public IObservable<StopData*> {
  public:
   explicit Stop(int, double = 44.973723, double = -93.235365);
   int LoadPassengers(Bus *);  // Removing passengers from stop
@@ -24,7 +26,7 @@ class Stop {
   void Update();
   int GetId() const;
   void Report(std::ostream&) const;
-
+  void UpdateStopData();
   // Vis Getters
   double GetLongitude() const { return longitude_; }
   double GetLatitude() const { return latitude_; }
@@ -38,5 +40,6 @@ class Stop {
   // derived information - not needed depending on passengers_
   // data structure implementation?
   // int passengers_present_;
+  StopData stop_data_;
 };
 #endif  // SRC_STOP_H_

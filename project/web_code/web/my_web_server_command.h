@@ -7,7 +7,6 @@
 #define WEB_MY_WEB_SERVER_COMMAND_H_
 
 #include <vector>
-
 #include "src/config_manager.h"
 #include "web_code/web/visualization_simulator.h"
 
@@ -93,17 +92,42 @@ class PauseCommand : public MyWebServerCommand {
 };
 
 /**
- * @brief The AddListenerCommand (Observer) command
+ * @brief The AddBusListenerCommand (Observer) command
  *
  */
-class AddListenerCommand: public MyWebServerCommand {
+class AddBusListenerCommand: public MyWebServerCommand {
+ public:
+  /**
+	 * @brief Sets up the AddBusListenerCommand functionality.
+	 *
+	 * @param sim The paramter is the running sim.
+	 */
+  explicit AddBusListenerCommand(VisualizationSimulator* sim);
+	/**
+	 * @brief function used when a bus is pressed.
+	 *
+	 * @param session information about the web session.
+	 * @param command information you passed in the JSON.
+	 * @param state Not that important as of now.
+	 */
+  void execute(MyWebServerSession* session, picojson::value* command,
+  MyWebServerSessionState* state) override;
+ private:
+  VisualizationSimulator* mySim;
+};
+
+/**
+ * @brief The AddStopListenerCommand (Observer) command
+ *
+ */
+class AddStopListenerCommand: public MyWebServerCommand {
  public:
   /**
 	 * @brief Sets up the AddListenerCommand functionality.
 	 *
 	 * @param sim The paramter is the running sim.
 	 */
-  explicit AddListenerCommand(VisualizationSimulator* sim);
+  explicit AddStopListenerCommand(VisualizationSimulator* sim);
 	/**
 	 * @brief function used when a bus is pressed.
 	 *

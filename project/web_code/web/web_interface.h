@@ -1,19 +1,20 @@
+/**
+ * @file web_interface.h
+ *
+ * @copyright 2020 3081 staff, All rights reserved.
+ */
+#ifndef WEB_WEB_INTERFACE_H_
+#define WEB_WEB_INTERFACE_H_
 
-#ifndef WEB_INTERFACE_H
-#define WEB_INTERFACE_H
-
-#include "data_structs.h"
-#include "bus.h"
-#include "route.h"
+#include "src/data_structs.h"
+#include "src/bus.h"
+#include "src/route.h"
 
 class WebInterface {
-
-public:
+ public:
     virtual ~WebInterface() {}
-    
+
     virtual void UpdateBus(const BusData& bus, bool deleted = false) = 0;
     virtual void UpdateRoute(const RouteData& route, bool deleted = false) = 0;
-
 };
-
-#endif // WEB_INTERFACE_H
+#endif  // WEB_WEB_INTERFACE_H_
