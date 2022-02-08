@@ -1,0 +1,9 @@
+libdir=/mnt/c/Users/bhagw/OneDrive/Desktop/csci3081/repo-bhagw018/external/install/lib
+includedir=/mnt/c/Users/bhagw/OneDrive/Desktop/csci3081/repo-bhagw018/external/install/include
+
+Name: gtest
+Description: GoogleTest (without main() function)
+Version: 1.10.0
+URL: https://github.com/google/googletest
+Libs: -L${libdir} -lgtest -lpthread
+Cflags: -I${includedir} -DGTEST_HAS_PTHREAD=1
